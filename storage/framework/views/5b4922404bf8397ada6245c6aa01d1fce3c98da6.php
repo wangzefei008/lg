@@ -43,15 +43,15 @@ var youdao_conv_id = 271546;
         
     	<input type="hidden" id="resubmitToken" value="" />		
 		 <div class="login_box">
-        	<form id="loginForm">
+        	<form id="loginForm"> 
 				<input type="text" id="email" name="email" value="" tabindex="1" placeholder="请输入登录邮箱地址" />
 			  	<input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
 				<span class="error" style="display:none;" id="beError"></span>
 			    <label class="fl" for="remember"><input type="checkbox" id="remember"  checked="checked" name="autoLogin" /> 记住我</label>
 			    <a href="reset.html" class="fr" target="_blank">忘记密码？</a>
 			    
-				<!-- <input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" /> -->
-				<a style="color:#fff;" href="<?php echo e(URL::to('login_do')); ?>" class="submitLogin" title="登 &nbsp; &nbsp; 录"/>登 &nbsp; &nbsp; 录</a>
+				<input type="button" id="submitLogin" value="登 &nbsp; &nbsp; 录" />
+				<!-- <a style="color:#fff;" href="" class="submitLogin" title="登 &nbsp; &nbsp; 录"/>登 &nbsp; &nbsp; 录</a> -->
 			</form>
 			<div class="login_right">
 				<div>还没有拉勾帐号？</div>
@@ -74,7 +74,6 @@ $(function(){
 	    	   	email: {
 	    	    	required: true,
 	    	    	email: true,
-	    	    	exists:''
 
 	    	   	},
 	    	   	password: {
@@ -89,37 +88,37 @@ $(function(){
 	    	   	password: {
 	    	    	required: "请输入密码"
 	    	   	}
-	    	},
-	    	submitHandler:function(form){
-	    		if($('#remember').prop("checked")){
-	      			$('#remember').val(1);
-	      		}else{
-	      			$('#remember').val(null);
-	      		}
-	    		var email = $('#email').val();
-	    		var password = $('#password').val();
-	    		var remember = $('#remember').val();	    		
-	    		$(form).find(":submit").attr("disabled", true);
-	            $.ajax({
-	            	type:'POST',
-	            	data:{email:email,password:password,autoLogin:remember},
-	            	url:'<?php echo e(URL::to("login_do")); ?>'
-	            }).done(function(result) {
-	            	alert(result);
-					if(result.success){
-					 	if(result.content.loginToUrl){
-							// window.location.href=result.content.loginToUrl;
-	            		}else{
-	            			// window.location.href=ctx+'/';
-	            		} 
-					}else{
-						$('#beError').text(result.msg).show();
-					}
-					$(form).find(":submit").attr("disabled", false);
-	            });
-	            } 	         
+	    	}	         
 		});
+		$('#submitLogin').click(function(event){
+
+			var email=$('#email').val();
+			var password=$('#password').val();
+			if($('#remember').prop('checked')){
+				var remember=1;
+			}else{
+				var remember=0;
+			}
+			$.ajax({
+				type:'post',
+				url:'<?php echo e(URL::to("login_do")); ?>',
+				data:{
+					'email':email,
+					'password':password,
+					'remember':remember
+				},
+				success:function(msg){
+					if(msg==1){
+						location.href='<?php echo e(URL::to("/")); ?>';
+					}else{
+						alert("用户名或密码错误");
+					}
+				}
+			})
+		})
+
 })
+
 </script>
 </body>
 </html>

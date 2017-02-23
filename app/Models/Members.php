@@ -14,6 +14,20 @@ class Members extends Model
     public function insert($arr)
     {
     	$this->fill($arr);  		 // 设置值  data为数组
-		return $this->save();  
+		$this->save();
+        // return $this;
+        return $this->attributes['uid'];  
+    }
+    //验证邮箱的唯一性
+    public function email($email){
+        return $this->where('email',$email)->get()->toArray();
+    }
+    //登录验证
+    public function check_login($email,$password){
+        return $this->where(['email'=>$email,'password'=>$password])->first();
+    }
+    //查询用户信息
+    public function select($uid){
+        return $this->find($uid)->toArray();
     }
 }

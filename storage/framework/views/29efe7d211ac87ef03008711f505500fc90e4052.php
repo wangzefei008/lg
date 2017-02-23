@@ -47,7 +47,7 @@ var youdao_conv_id = 271546;
         		<ul class="register_radio clearfix">
 		            <li>
 		            	找工作
-		              	<input type="radio" value="0" name="utype" /> 
+		              	<input type="radio" value="2" name="utype" /> 
 		            </li>
 		            <li>
 		           	           招人
@@ -86,7 +86,7 @@ var youdao_conv_id = 271546;
     	//验证表单
 	    	 $("#loginForm").validate({
 	    	        rules: {
-	    	        	type:{
+	    	        	utype:{
 	    	        		required: true
 	    	        	},
 			    	   	email: {
@@ -100,7 +100,7 @@ var youdao_conv_id = 271546;
 			    	   	checkbox:{required:true}
 			    	},
 			    	messages: {
-			    		type:{
+			    		utype:{
 	    	        		required:"请选择使用拉勾的目的"
 	    	        	},
 			    	 	email: {
@@ -115,15 +115,7 @@ var youdao_conv_id = 271546;
 			    	    	required: "请接受拉勾用户协议"
 			    	   	}
 			    	},
-			    	errorPlacement:function(label, element){/* 
-			    		if(element.attr("type") == "radio"){
-			    			label.insertAfter($(element).parents('ul')).css('marginTop','-20px');
-			    		}else if(element.attr("type") == "checkbox"){
-			    			label.inserresult.contenttAfter($(element).parent()).css('clear','left');
-			    		}else{
-			    			label.insertAfter(element);
-			    		} */			    		
-			    		/*modify nancy*/
+			    	errorPlacement:function(label, element){
 			    		if(element.attr("type") == "radio"){
 			    			label.insertAfter($(element).parents('ul')).css('marginTop','-20px');
 			    		}else if(element.attr("type") == "checkbox"){
@@ -132,31 +124,42 @@ var youdao_conv_id = 271546;
 			    			label.insertAfter(element);
 			    		};	
 			    	}
-			    	// submitHandler:function(form){
-			    	// 	var type =$('input[type="radio"]:checked',form).val();
-			    	// 	var email =$('#email').val();
-			    	// 	var password =$('#password').val();
-			    	// 	var checkbox=$('#checkbox').val();
-			    		
-			    	// 	$(form).find(":submit").attr("disabled", true);
-
-			     //        $.ajax({
-			     //        	type:'POST',
-			     //        	data: {email:email,password:password,type:type,checkbox:checkbox},
-			     //        	url:'register_do',
-			     //        	dataType:'json'
-			     //        }).done(function(result) {
-		      //       		$('#resubmitToken').val(result.resubmitToken);
-			     //        	if(result.success){
-			     //        		window.location.href='show';            		
-			     //        	}else{
-								// $('#beError').text(result.msg).show();
-			     //        	}
-			     //        	$(form).find(":submit").attr("disabled", false);			           		
-			     //        });
-			     //    }  
 	    	});
     });
+    $(function(){
+    	var glob={
+    		'email':false
+    	}
+    	$('#email').blur(function(){
+    	var obj=$(this);
+    	var email=obj.val();
+    	$.ajax({
+    		type:'post',
+    		url:"<?php echo e(URL::to('check_email')); ?>",
+    		data:{
+    			'email':email
+    		},
+    		success:function(msg){
+    			if(msg==1){
+    				alert('邮箱已经存在！');
+    				glob.email=false;
+    			}else{
+    				glob.email=true;
+    			}
+    		}
+    	})
+    });
+    $('#loginForm').submit(function(){
+    	$('#email').trigger('blur');
+    	if(glob.email==true){
+    		return true;
+    	}else{
+    		return false;
+    	}
+   	
+    })
+    })
+    
     </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ use Request;
 use Validator;
 use App\User;
 use Auth;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -21,49 +22,60 @@ class RegisterController extends Controller
 	{
 		$arr=Input::all();
 		// dd($arr);
-		//验证邮箱唯一性
-		$val=Validator::make($arr,[
-			'email'=> 'required|unique:members',
-			]);
-		if($val->fails()){
-			return $val->errors();
-			//输出验证的报错信息
+		$members=new \App\Models\Members;
+		// dd($members);
+		$arr['reg_time']=time();
+		$arr['reg_ip']=$_SERVER['REMOTE_ADDR'];
+		//获取本机IP
+		$arr['password']=md5($arr['password']);	
+		$arr['username']=$arr['email'];
+		$aa=$members->insert($arr);
+		// dd($aa);die;	 
+		if($aa){
+			session(['email'=>$arr['email'],'uid'=>$aa,'utype'=>$arr['utype']]);
+			return redirect('/')->with('注册成功');				
 		}else{
-			$pms=new \App\Models\Members;
-			$arr['reg_time']=time();
-			$arr['reg_ip']=$_SERVER['REMOTE_ADDR'];
-			//获取本机IP
-			$arr['password']=md5($arr['password']);		 
-			if($pms->insert($arr)){
-				return redirect('/')->with('注册成功');				
-			}else{
-				return redirect()->back()->withInput()->withErrors('注册失败！');
-			}
-		}				
+			return redirect()->back()->withInput()->withErrors('注册失败！');
+		}
+	}				
+	//验证邮箱的唯一性
+	public function check_email()
+	{
+		$email=Request::all()['email'];
+		// $email='2297@qq.com';
+		$members=new \App\Models\Members;
+		// dd($members->email($email));
+		if(empty($members->email($email))){
+			echo 0;
+		}else{
+			echo 1;
+		}
 	}
-	public function login(){
+	//登录页面
+	public function login()
+	{
 		return view('lg.login');
 	}
-	public function login_do(){
+	//登录验证
+	public function login_do()
+	{
 		$email=Request::all()['email'];
 		$password=md5(Request::all()['password']);
-		$arr=Input::all();
-		$arr['password']=md5($arr['password']);	
-		// dd(Auth::login($arr));
-		$rules=[
-			'email'=> 'exists:members,email',
-			'password'=> 'exists:members,password',
-			];
-		$messages=[
-			'exists'=>':attribute don\'t exists',
-		];	
-		$val=Validator::make($arr,$rules,$messages);
-		if($val->fails()){
-			return $val->messages();
-			//输出验证的报错信息
+		$remember=Request::all()['remember'];
+		// echo $remember;die;
+		$members=new \App\Models\Members;
+		$arr=$members->check_login($email,$password);
+		if(empty($arr)){
+			echo 0;
 		}else{
-			return redirect('/')->with('登录成功');
-		}
-
+			// dd($arr->toArray());
+			// dd($arr['utype']);			
+			if($remember==1){
+				$lifeTime = 3*24 * 3600; // 保存一天
+				session_set_cookie_params($lifeTime); 
+			}
+			session(['email'=>$email,'uid'=>$arr['uid'],'utype'=>$arr['utype']]);
+			echo 1;
+		}		
 	}
 }
