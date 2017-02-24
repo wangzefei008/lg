@@ -58,7 +58,7 @@ var youdao_conv_id = 271546;
                     @if(!empty($utype)&&$utype==2)
                         <dd><a rel="nofollow" href="">个人中心</a></dd>
                     @else
-                        <dd><a rel="nofollow" href="">企业中心</a></dd>
+                        <dd><a rel="nofollow" href="{{URL::to('company')}}">企业中心</a></dd>
                     @endif
                     <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
                 </dl>

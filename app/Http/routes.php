@@ -41,3 +41,16 @@ Route::get('test',function(){
 	Session::put('uname','lisi');
 	
 });
+
+//企业中心首页
+Route::any('/company','Lg\CompanyController@index');
+//职位招聘添加
+Route::any('/company_create','Lg\CompanyController@add');
+//职位招聘验证
+Route::any('/company_add','Lg\CompanyController@add_pro');
+//企业信息展示
+Route::any('/company_mymessage','Lg\CompanyController@mymessage');
+//企业信息完善
+Route::any('/company_my_message','Lg\CompanyController@my_message');
+//企业信息完善验证
+Route::any('/company_my_message_pro','Lg\CompanyController@my_message_pro');
