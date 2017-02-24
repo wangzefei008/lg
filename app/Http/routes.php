@@ -37,6 +37,8 @@ Route::post('/login_do','Lg\RegisterController@login_do');
 //登录处理
 Route::post('/check_email','Lg\RegisterController@check_email');
 //验证邮箱的唯一性
+Route::get('/logout','Lg\RegisterController@logout');
+//退出
 Route::get('/job_list','Lg\JobController@index');
 //招聘信息首页
 Route::any('/get_district','Lg\JobController@get_district');

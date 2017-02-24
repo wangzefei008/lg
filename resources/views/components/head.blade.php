@@ -63,7 +63,7 @@ var youdao_conv_id = 271546;
                     @else
                         <dd><a rel="nofollow" href="">企业中心</a></dd>
                     @endif
-                    <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+                    <dd class="logout"><a rel="nofollow" href="{{URL::to('logout')}}">退出</a></dd>
                 </dl>
              @else               
             <ul class="loginTop">

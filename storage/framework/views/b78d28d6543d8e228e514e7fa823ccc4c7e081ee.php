@@ -63,7 +63,7 @@ var youdao_conv_id = 271546;
                     <?php else: ?>
                         <dd><a rel="nofollow" href="">企业中心</a></dd>
                     <?php endif; ?>
-                    <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+                    <dd class="logout"><a rel="nofollow" href="<?php echo e(URL::to('logout')); ?>">退出</a></dd>
                 </dl>
              <?php else: ?>               
             <ul class="loginTop">
