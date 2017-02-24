@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/',function(){
-	$data['email']=Session::get('email');
-	$data['utype']=Session::get('utype');
-	// dd($data);
-	return view('lg.index',$data);
-});
+Route::get('/','Lg\IndexController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +28,16 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 Route::get('/register','Lg\RegisterController@index');
+//注册
 Route::post('/register_do','Lg\RegisterController@register_do');
+//注册处理
 Route::get('/login','Lg\RegisterController@login');
+//登录
 Route::post('/login_do','Lg\RegisterController@login_do');
+//登录处理
 Route::post('/check_email','Lg\RegisterController@check_email');
-Route::get('test',function(){
-	Session::put('uname','lisi');
-	
-});
+//验证邮箱的唯一性
+Route::get('/job_list','Lg\JobController@index');
+//招聘信息首页
+Route::any('/get_district','Lg\JobController@get_district');
+//获取城市

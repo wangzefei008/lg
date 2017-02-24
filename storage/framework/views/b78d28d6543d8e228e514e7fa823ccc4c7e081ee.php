@@ -1,3 +1,7 @@
+<?php
+$email=Session::get('email');
+$utype=Session::get('utype');
+?>
 <!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
@@ -43,9 +47,8 @@ var youdao_conv_id = 271546;
             <ul class="reset" id="navheader">
                 <li class="current"><a href="index.html">首页</a></li>
                 <li ><a href="companylist.html" >公司</a></li>
-                <li ><a href="#" target="_blank">招聘信息</a></li>
+                <li ><a href="<?php echo e(URL::to('job_list')); ?>" target="_blank">招聘信息</a></li>
                 <li ><a href="#" target="_blank">求职信息</a></li>
-                <li ><a href="#" target="_blank">发布职位</a></li>
             </ul>
             <!-- <?php echo e($email); ?> -->
              <?php if(!empty($email)): ?>
