@@ -18,7 +18,7 @@ $utype=Session::get('utype');
 
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
-var ctx = "h";
+// var ctx = "h";
 console.log(1);
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
@@ -36,6 +36,11 @@ console.log(1);
 var youdao_conv_id = 271546; 
 </script> 
 <script type="text/javascript" src="style/js/conv.js"></script>
+<style>
+.Pagination ul li{
+    list-style-type:none;
+}
+</style>
 </head>
 <body>
 <div id="body">

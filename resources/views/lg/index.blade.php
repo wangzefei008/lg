@@ -17,7 +17,7 @@
 						</dt>
 						<dd>
 						@foreach($v1 as $k2=>$v2)
-							<a href="">{{$v2}}</a>
+							<a href="job_list?kd={{$v2}}">{{$v2}}</a>
 						@endforeach
 						</dd>						
 					</dl>
@@ -32,26 +32,14 @@
 		<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
         <div class="content">	
 	        <div id="search_box">
-		<form id="searchForm" name="searchForm" action="list.html" method="get">
+		<form id="searchForm" name="searchForm" action="job_list" method="get">
         <ul id="searchType">
         	<li data-searchtype="1" class="type_selected">职位</li>
         	<li data-searchtype="4">公司</li>
         </ul>
         <div class="searchtype_arrow"></div>
         <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
-        <input type="hidden" name="spc" id="spcInput" value=""/>
-        <input type="hidden" name="pl" id="plInput" value=""/>
-        <input type="hidden" name="gj" id="gjInput" value=""/>
-        <input type="hidden" name="xl" id="xlInput" value=""/>
-        <input type="hidden" name="yx" id="yxInput" value=""/>
-        <input type="hidden" name="gx" id="gxInput" value="" />
-        <input type="hidden" name="st" id="stInput" value="" />
-        <input type="hidden" name="labelWords" id="labelWords" value="" />
-        <input type="hidden" name="lc" id="lc" value="" />
-        <input type="hidden" name="workAddress" id="workAddress" value=""/>
-        <input type="hidden" name="city" id="cityInput" value=""/>
-        <input type="submit" id="search_button" value="搜索" />
-				
+        <input type="submit" id="search_button" value="搜索" />				
     </form>
 </div>
 <style>
@@ -64,10 +52,8 @@
 <dl class="hotSearch">
 	<dt>热门搜索：</dt>
 	@foreach($hot as $k=>$v)
-		<dd><a href="">{{$v['w_word']}}</a></dd>
-	@endforeach
-	
-	
+		<dd><a href="job_list?kd={{$v['w_word']}}">{{$v['w_word']}}</a></dd>
+	@endforeach	
 </dl>			
 			<div id="home_banner">
 	            <ul class="banner_bg">
@@ -181,69 +167,63 @@
             </ul>
                      <div id="hotList">
 	            <ul class="hot_pos reset">
-	            	<li class="clearfix">
-		            	<div class="hot_pos_l">
-			                    	<div class="mb10">
-			                        	<a href="h/jobs/147822.html" target="_blank">运营总监</a> 
-			                            &nbsp;
-			                            <span class="c9">[北京]</span>
-			                            			                        </div>
-			                        <span><em class="c7">月薪： </em>15k-20k</span>
-			                        <span><em class="c7">经验：</em> 3-5年</span>
-			                        <span><em class="c7">最低学历： </em>本科</span>
-			                        <br />
-			                        <span><em class="c7">职位诱惑：</em>发展前景</span>
-			                        <br />
-				                    <span>1天前发布</span>
-			                        <!-- <a  class="wb">分享到微博</a> -->
-			                    </div>
-			                	<div class="hot_pos_r">
-			                    	<div class="mb10 recompany"><a href="h/c/399.html" target="_blank">节操精选</a></div>
-			                        <span><em class="c7">领域：</em> 移动互联网</span>
-			                        			                        <span><em class="c7">创始人：</em>陈桦</span>
-			                        			                        <br />
-			                        <span><em class="c7">阶段：</em> 初创型(天使轮)</span>
-			                        <span><em class="c7">规模：</em>少于15人</span>
-			                        <ul class="companyTags reset">
-			                        	<li>移动互联网</li>
-			                        	<li>五险一金</li>
-			                        	<li>扁平管理</li>
-			                        </ul>
+	            	@foreach($hot_job as $k=>$v)
+	            <li class="odd clearfix">
+			        <div class="hot_pos_l">
+			            <div class="mb10">
+			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
+			                &nbsp;
+			                <span class="c9">{{$v['district_cn']}}</span>
 			            </div>
-			       </li>
+			            <span><em class="c7">月薪：</em>{{$v['salaryMin']}}-{{$v['salaryMax']}}</span>
+			            <span><em class="c7">经验：</em>{{$v['experience_cn']}}</span>
+                        <span><em class="c7">最低学历： </em>{{$v['education_cn']}}</span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>{{$v['tag_cn']}}</span>
+                        <br />
+                        <span>{{date('Y-m-d H:i:s',$v['addtime'])}}</span>
+			        </div> 
+					<div class="hot_pos_r">
+			            <div class="apply">
+			                <a href="toudi.html" target="_blank">投个简历</a>
+			            </div>
+			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
+                        <span><em class="c7">领域： </em>{{$v['trade_cn']}}</span>
+                        <span><em class="c7">创始人：</em> {{$v['contact']}}</span><br /> 
+                        <span><em class="c7">规模： </em>{{$v['scale_cn']}}</span>
+			        </div>
+			    </li>
+			    @endforeach		
 	                <a href="list.html" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
 	            <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
-	            	<li class="clearfix">
-		            	<div class="hot_pos_l">
-			                    	<div class="mb10">
-			                        	<a href="h/jobs/149389.html" target="_blank">高级PHP研发工程师</a> 
-			                            &nbsp;
-			                            <span class="c9">[南京]</span>
-			                            			                        </div>
-			                        <span><em class="c7">月薪： </em>12k-24k</span>
-			                        <span><em class="c7">经验：</em>3-5年</span>
-			                        <span><em class="c7">最低学历：</em> 本科</span>
-			                        <br />
-			                        <span><em class="c7">职位诱惑：</em>IPO了的互联网创业公司，潜力无限！</span>
-			                        <br />
-				                    <span>15:11发布</span>
-			                        <!-- <a  class="wb">分享到微博</a> -->
-			                    </div>
-			                	<div class="hot_pos_r">
-			                    	<div class="mb10"><a href="h/c/8250.html" target="_blank">途牛旅游网</a></div>
-			                        <span><em class="c7">领域：</em> 电子商务,在线旅游</span>
-			                        			                        <span><em class="c7">创始人：</em>于敦德</span>
-			                        			                        <br />
-			                        <span> <em class="c7">阶段： </em>上市公司</span>
-			                        <span> <em class="c7">规模：</em>500-2000人</span>
-			                        <ul class="companyTags reset">
-			                        	<li>绩效奖金</li>
-			                        	<li>股票期权</li>
-			                        	<li>五险一金</li>
-			                        </ul>
-			             </div>
-			        </li>
+	            	@foreach($new as $k=>$v)
+	            <li class="odd clearfix">
+			        <div class="hot_pos_l">
+			            <div class="mb10">
+			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
+			                &nbsp;
+			                <span class="c9">{{$v['district_cn']}}</span>
+			            </div>
+			            <span><em class="c7">月薪：</em>{{$v['salaryMin']}}-{{$v['salaryMax']}}</span>
+			            <span><em class="c7">经验：</em>{{$v['experience_cn']}}</span>
+                        <span><em class="c7">最低学历： </em>{{$v['education_cn']}}</span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>{{$v['tag_cn']}}</span>
+                        <br />
+                        <span>{{date('Y-m-d H:i:s',$v['addtime'])}}</span>
+			        </div> 
+					<div class="hot_pos_r">
+			            <div class="apply">
+			                <a href="toudi.html" target="_blank">投个简历</a>
+			            </div>
+			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
+                        <span><em class="c7">领域： </em>{{$v['trade_cn']}}</span>
+                        <span><em class="c7">创始人：</em> {{$v['contact']}}</span><br /> 
+                        <span><em class="c7">规模： </em>{{$v['scale_cn']}}</span>
+			        </div>
+			    </li>
+			    @endforeach		
 	                <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
             </div>
