@@ -1,44 +1,5 @@
 ﻿@include('components.head')
-    <div id="container">
-                	<div class="sidebar">
-            	<a class="btn_create" href="{{URL::to('company_create')}}">发布新职位</a>
-            	  <dl class="company_center_aside">
-		<dt>我的信息</dt>
-		<dd>
-		<a href="{{ URL::to('company_mymessage') }}">我的信息</a> 
-			</dd>
-	<dd>
-		<a href="{{ URL::to('company_my_message') }}">完善/修改信息</a>
-	</dd>
-</dl>
-                <dl class="company_center_aside">
-		<dt>我收到的简历</dt>
-		<dd>
-		<a href="unHandleResumes.html">待处理简历</a> 
-			</dd>
-	<dd>
-		<a href="canInterviewResumes.html">待定简历</a>
-	</dd>
-	<dd>
-		<a href="haveNoticeResumes.html">已通知面试简历</a>
-	</dd>
-	<dd>
-		<a href="haveRefuseResumes.html">不合适简历</a>
-	</dd>
-	<dd class="btm">
-		<a href="autoFilterResumes.html">自动过滤简历</a> 
-			</dd>
-</dl>
-<dl class="company_center_aside">
-		<dt>我发布的职位</dt>
-			<dd class="current">
-		<a href="positions.html">有效职位</a>
-	</dd>
-	<dd>
-		<a href="positions.html">已下线职位</a>
-	</dd>
-	</dl>
-            </div><!-- end .sidebar -->
+@include('components.company')<!-- end .sidebar -->
             <div class="content">
             	<dl class="company_center_content">
                     <dt>

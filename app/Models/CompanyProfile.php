@@ -9,9 +9,9 @@ class CompanyProfile extends Model
     //表名
     protected $table = 'company_profile';
     //指定主键
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'c_id';
     //被重写的字段
-    protected $guarded = ['id'];
+    protected $guarded = ['c_id'];
     //隐藏字段
     protected $hidden = [];
     //默认添加开始时间和结束时间，默认开启ture
@@ -40,4 +40,5 @@ class CompanyProfile extends Model
     	return $info;
     }
 
+    
 }

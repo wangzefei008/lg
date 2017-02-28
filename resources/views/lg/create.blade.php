@@ -70,7 +70,7 @@ var youdao_conv_id = 271546;
                 <dl class="company_center_aside">
 		<dt>我收到的简历</dt>
 		<dd>
-		<a href="">待处理简历</a> 
+		<a href="{{ URL::to('labelresume') }}">待处理简历</a> 
 			</dd>
 	<dd>
 		<a href="canInterviewResumes.html">待定简历</a>
@@ -250,7 +250,7 @@ var youdao_conv_id = 271546;
                                 	<td><span class="redstar">*</span></td>
                                 	<td>工作地址</td>
                                 	<td>
-                                    	<input type="text" placeholder="请输入详细的工作地址" value="" name="street_cn " class="input_520" id="positionAddress">	
+                                    	<input type="text" placeholder="请输入详细的工作地址" value="" name="street_cn" class="input_520" id="positionAddress">	
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -274,6 +274,7 @@ var youdao_conv_id = 271546;
                                 <tr>
                                 	<td width="25"></td>
                                 	<td colspan="2">
+                                		<a href="{{URL::to('company')}}">返回</a>
                                     	<input type="submit" value="发布">
                                     </td>
                                 </tr>
