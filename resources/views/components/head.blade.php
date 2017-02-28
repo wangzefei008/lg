@@ -77,5 +77,5 @@ var youdao_conv_id = 271546;
                 <li><a href="{{URL::to('register')}}" rel="nofollow">注册</a></li>
             </ul>
             @endif
-                                </div>
+         </div>
     </div><!-- end #header -->

@@ -42,4 +42,16 @@ class Jobs extends Model
         ->join('company_profile','company_profile.uid','=','members.uid')
         ->whereRaw($where)->offset(0)->limit(10)->get()->toArray();
     }
+    //查询一条
+    public function get_one($id){
+          return $this->join('members','members.uid','=','jobs.uid')
+        ->join('company_profile','company_profile.uid','=','members.uid')
+        ->where('jobs.id',$id)->first()->toArray();
+    }
+    //相关职位
+    public function get_connect($trade_cn){
+        return $this->join('members','members.uid','=','jobs.uid')
+        ->join('company_profile','company_profile.uid','=','members.uid')
+        ->where('jobs.trade_cn','like',"%$trade_cn%")->offset(0)->limit(5)->get()->toArray();
+    }
 }

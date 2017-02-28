@@ -58,3 +58,5 @@ Route::get('/job_list','Lg\JobController@index');
 //招聘信息首页
 Route::any('/get_district','Lg\JobController@get_district');
 //获取城市
+Route::any('/toudi','Lg\JobController@toudi');
+//投递简历

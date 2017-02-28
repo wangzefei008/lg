@@ -6,7 +6,11 @@
                 <dt>月薪范围 <em ></em></dt>
 	            <dd >
                 	<?php foreach($category['QS_wage'] as $k=>$v): ?>
+                	<?php if($job->yx==$v['c_name']): ?>
+                		<div style="background: #12bc86"><?php echo e($v['c_name']); ?></div>
+                	<?php else: ?>
                 		<div><?php echo e($v['c_name']); ?></div>
+                	<?php endif; ?>	
                 	<?php endforeach; ?>
 	            </dd> 
             </dl>
@@ -14,7 +18,11 @@
                 <dt>工作经验 <em ></em></dt>
 	            <dd >
                 	<?php foreach($category['QS_experience'] as $k=>$v): ?>
+                	<?php if($job->gj==$v['c_name']): ?>
+                		<div style="background: #12bc86"><?php echo e($v['c_name']); ?></div>
+                	<?php else: ?>
                 		<div><?php echo e($v['c_name']); ?></div>
+                	<?php endif; ?>	
                 	<?php endforeach; ?>
             	</dd> 
             </dl>
@@ -22,7 +30,11 @@
                 <dt>最低学历 <em ></em></dt>
 	            <dd >
                 	<?php foreach($category['QS_education'] as $k=>$v): ?>
+                		<?php if($job->xl==$v['c_name']): ?>
+                		<div style="background: #12bc86"><?php echo e($v['c_name']); ?></div>
+                	<?php else: ?>
                 		<div><?php echo e($v['c_name']); ?></div>
+                	<?php endif; ?>	
                 	<?php endforeach; ?>
            		</dd> 
             </dl>
@@ -30,16 +42,34 @@
                 <dt>工作性质 <em ></em></dt>
 	            <dd >
                 	<?php foreach($category['QS_jobs_nature'] as $k=>$v): ?>
+                	<?php if($job->gx==$v['c_name']): ?>
+                		<div style="background: #12bc86"><?php echo e($v['c_name']); ?></div>
+                	<?php else: ?>
                 		<div><?php echo e($v['c_name']); ?></div>
+                	<?php endif; ?>	
                 	<?php endforeach; ?>
             	</dd> 
             </dl>
             <dl>
                 <dt>发布时间 <em ></em></dt>
-	            <dd >               	
+	            <dd >
+	            <?php if($job->st=='3天内'): ?>               	
+                	<div style="background: #12bc86">3天内</div>                	
+                	<div>一周内</div>                	
+                	<div>一月内</div>
+                <?php elseif($job->st=='一周内'): ?>
+                	<div>3天内</div>                	
+                	<div style="background: #12bc86">一周内</div>                	
+                	<div>一月内</div>
+                <?php elseif($job->st=='一月内'): ?>
+					<div>3天内</div>                	
+                	<div>一周内</div>                	
+                	<div style="background: #12bc86">一月内</div>
+                <?php else: ?>
                 	<div>3天内</div>                	
                 	<div>一周内</div>                	
-                	<div>一月内</div>                	
+                	<div>一月内</div>
+                <?php endif; ?>		                	
            		</dd> 
             </dl>
         </div>           
@@ -52,7 +82,7 @@
 			    	<li data-searchtype="4">公司</li>
 			    </ul>
 			    <div class="searchtype_arrow"></div>
-			    <input type="text" id="search_input" name = "kd"  tabindex="1" value=""/>
+			    <input type="text" id="search_input" name = "kd"  tabindex="1" value="<?php echo e($job->kd); ?>"/>
 			    <input type="hidden" name="city" id="cityInput" value="全国"/>
 			    <input type="submit" id="search_button" value="搜索" />
 		    </form>
@@ -113,7 +143,7 @@
 			        </div> 
 					<div class="hot_pos_r">
 			            <div class="apply">
-			                <a href="toudi.html" target="_blank">投个简历</a>
+			                <a href="toudi?j_id=<?php echo e($v['id']); ?>" target="_blank">投个简历</a>
 			            </div>
 			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank"><?php echo e($v['companyname']); ?></a></div>
                         <span><em class="c7">领域： </em><?php echo e($v['trade_cn']); ?></span>

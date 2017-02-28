@@ -77,5 +77,5 @@ var youdao_conv_id = 271546;
                 <li><a href="<?php echo e(URL::to('register')); ?>" rel="nofollow">注册</a></li>
             </ul>
             <?php endif; ?>
-                                </div>
+         </div>
     </div><!-- end #header -->

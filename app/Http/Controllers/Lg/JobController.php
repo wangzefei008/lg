@@ -77,6 +77,7 @@ class JobController extends Controller
 		//分类
 		$district=new \App\Models\District;
 		$data['district']=$district->get_province();
+		
 		//城市 顶级
 		return view('lg.job_list',$data);
 	}
@@ -100,5 +101,23 @@ class JobController extends Controller
 		$district=new \App\Models\District;
 		$res=$district->get_district($parentid);
 		echo json_encode($res);
+	}
+	//投递简历
+	public function toudi(){
+		if(empty(Session::get('uid'))){
+			return redirect('login');
+		}else{
+			$id=Request::all()['j_id'];
+			$uid=Session::get('uid');
+			$job=new \App\Models\Jobs;
+			$data['job']=$job->get_one($id);
+			// dd($data['job']);
+			$trade_cn=$data['job']['trade_cn'];
+			// echo $trade_cn;
+			$data['connect']=$job->get_connect($trade_cn);
+			// dd($data['connect']);
+			return view('lg.toudi',$data);
+		}
+		
 	}
 }
