@@ -25,6 +25,7 @@ class Jobs extends Model
     	return $info;
     }
 
+
     //根据uid及deadline查询 有效
     public function selectYes($uid,$deadline)
     {
@@ -51,5 +52,25 @@ class Jobs extends Model
     {
         $count = $this->where('uid',$uid)->where('deadline','<',$deadline)->count();
         return $count;
+    }
+
+    //搜索职位
+    public function select($where){
+        return $this->join('members','members.uid','=','jobs.uid')
+        ->join('company_profile','company_profile.uid','=','members.uid')
+        ->whereRaw($where)->paginate(6);
+    }
+    //最新职位
+     public function get_new(){
+        return $this->join('members','members.uid','=','jobs.uid')
+        ->join('company_profile','company_profile.uid','=','members.uid')
+        ->orderBy('jobs.addtime')->offset(0)->limit(10)->get()->toArray();
+    }
+    //最热职位
+     public function get_hot($where){
+        return $this->join('members','members.uid','=','jobs.uid')
+        ->join('company_profile','company_profile.uid','=','members.uid')
+        ->whereRaw($where)->offset(0)->limit(10)->get()->toArray();
+
     }
 }

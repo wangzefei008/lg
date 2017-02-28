@@ -34,59 +34,25 @@
                 	<?php endforeach; ?>
             	</dd> 
             </dl>
-            <dl >
+            <dl>
                 <dt>发布时间 <em ></em></dt>
-	            <dd >
-                	<div>今天</div>                	
+	            <dd >               	
                 	<div>3天内</div>                	
                 	<div>一周内</div>                	
                 	<div>一月内</div>                	
            		</dd> 
             </dl>
         </div>           
-<!-- QQ群 -->
-	    <div class="qq_group">
-        	加入<span>前端</span>QQ群
-        	<div class="f18">跟同行聊聊</div>
-        	<p>160541839</p>
-        </div>
-                            
-<!-- 对外合作广告位  -->
-    	<a href="http://www.w3cplus.com/" target="_blank" class="partnersAd">
-			<img src="style/images/w3cplus.png" width="230" height="80" alt="w3cplus" />
-		</a>
-		<a href="" target="_blank" class="partnersAd">
-			<img src="style/images/jquery_school.jpg" width="230" height="80" alt="JQ学校" />
-		</a>
-		<a href="http://linux.cn/" target="_blank" class="partnersAd">
-	        <img src="style/images/linuxcn.png" width="230" height="80" alt="Linux中文社区"  />
-	    </a>
-	    <a href="http://zt.zhubajie.com/zt/makesite? utm_source=lagou.com&utm_medium=referral&utm_campaign=BD-yl" target="_blank" class="partnersAd">
-	        <img src="style/images/zhubajie.jpg" width="230" height="80" alt="猪八戒" />
-	    </a>
-        <a href="http://www.imooc.com" target="_blank" class="partnersAd">
-        	<img src="style/images/muke.jpg" width="230" height="80" alt="幕课网" />
-        </a>
     </div>
     <div class="content">
     	<div id="search_box">
-			<form id="searchForm" name="searchForm" action="list.html" method="get">
+			<form id="searchForm" name="searchForm" action="<?php echo e(URL::to('job_list')); ?>" method="get">
 			    <ul id="searchType">
-			    	        	<li data-searchtype="1" class="type_selected">职位</li>
+			    	<li data-searchtype="1" class="type_selected">职位</li>
 			    	<li data-searchtype="4">公司</li>
-			    	        </ul>
+			    </ul>
 			    <div class="searchtype_arrow"></div>
-			    <input type="text" id="search_input" name = "kd"  tabindex="1" value="前端开发"  placeholder="请输入职位名称，如：产品经理"  />
-			    <input type="hidden" name="spc" id="spcInput" value="1"/>
-			    <input type="hidden" name="pl" id="plInput" value=""/>
-			    <input type="hidden" name="gj" id="gjInput" value=""/>
-			    <input type="hidden" name="xl" id="xlInput" value=""/>
-			    <input type="hidden" name="yx" id="yxInput" value=""/>
-			    <input type="hidden" name="gx" id="gxInput" value="" />
-			    <input type="hidden" name="st" id="stInput" value="" />
-			    <input type="hidden" name="labelWords" id="labelWords" value="label" />
-			    <input type="hidden" name="lc" id="lc" value="" />
-			    <input type="hidden" name="workAddress" id="workAddress" value=""/>
+			    <input type="text" id="search_input" name = "kd"  tabindex="1" value=""/>
 			    <input type="hidden" name="city" id="cityInput" value="全国"/>
 			    <input type="submit" id="search_button" value="搜索" />
 		    </form>
@@ -101,7 +67,7 @@
 <dl class="hotSearch">
 	<dt>热门搜索：</dt>
 	<?php foreach($hot as $k=>$v): ?>
-		<dd><a href=""><?php echo e($v['w_word']); ?></a></dd>
+		<dd><a href="job_list?kd=<?php echo e($v['w_word']); ?>"><?php echo e($v['w_word']); ?></a></dd>
 	<?php endforeach; ?>
 </dl>			
 <div class="breakline"></div>
@@ -118,8 +84,8 @@
         </dd> 
         <dd>
 		地区：
-		<select>
-			<option id="aa">请选择</option>
+		<select id="aa">
+			<option id='bb' class='aa'>请选择</option>
         </select> 
         </dd>
     </dl>
@@ -129,99 +95,91 @@
             	<a href="javascript:;">我知道了</a>
             </div>            
             <ul class="hot_pos reset">
+            	<?php foreach($job as $k=>$v): ?>
 	            <li class="odd clearfix">
 			        <div class="hot_pos_l">
 			            <div class="mb10">
-			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">前端开发</a> 
+			                <a href="h/jobs/86989.html" title="前端开发" target="_blank"><?php echo e($v['category_cn']); ?></a> 
 			                &nbsp;
-			                <span class="c9">[北京]</span>
+			                <span class="c9"><?php echo e($v['district_cn']); ?></span>
 			            </div>
-			            <span><em class="c7">月薪：</em>10k-20k</span>
-			            <span><em class="c7">经验：</em> 3-5年</span>
-                        <span><em class="c7">最低学历： </em>本科</span>
+			            <span><em class="c7">月薪：</em><?php echo e($v['salaryMin']); ?>-<?php echo e($v['salaryMax']); ?></span>
+			            <span><em class="c7">经验：</em><?php echo e($v['experience_cn']); ?></span>
+                        <span><em class="c7">最低学历： </em><?php echo e($v['education_cn']); ?></span>
                         <br />
-                        <span><em class="c7">职位诱惑：</em>借移动医疗大势享受坐直升飞机的职场发展</span>
+                        <span><em class="c7">职位诱惑：</em><?php echo e($v['tag_cn']); ?></span>
                         <br />
-                        <span>1天前发布</span>
+                        <span><?php echo e(date('Y-m-d H:i:s',$v['addtime'])); ?></span>
 			        </div> 
 					<div class="hot_pos_r">
-			             <div class="apply">
+			            <div class="apply">
 			                <a href="toudi.html" target="_blank">投个简历</a>
 			            </div>
-			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">紫色医疗</a></div>
-                        <span><em class="c7">领域： </em>移动互联网 ,健康医疗</span>
-                        <span><em class="c7">创始人：</em> Lu</span><br />
-                        <span><em class="c7">阶段： </em>成长型(A轮)</span>
-                        <span><em class="c7">规模： </em>15-50人</span>
-                        <ul class="companyTags reset">
-			                <li>五险一金</li>
-			                <li>股票期权</li>
-			                <li>年度旅游</li>
-			            </ul>
+			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank"><?php echo e($v['companyname']); ?></a></div>
+                        <span><em class="c7">领域： </em><?php echo e($v['trade_cn']); ?></span>
+                        <span><em class="c7">创始人：</em> <?php echo e($v['contact']); ?></span><br /> 
+                        <span><em class="c7">规模： </em><?php echo e($v['scale_cn']); ?></span>
 			        </div>
-			    </li>			                
+			    </li>
+			    <?php endforeach; ?>			                
 			</ul>
-	        <div class="Pagination"></div>
-        </div>	
+	        <div class="Pagination">
+			<?php echo $job->appends(array('kd'=>$job->kd,'gx'=>$job->gx,'xl'=>$job->xl,'gj'=>$job->gj,'st'=>$job->st,'city'=>$job->city,'yx'=>$job->yx))->render(); ?>
 
+	        </div>
+        </div>	
 <script>
-$(function(){
-	/***************************
- 	 * 分页
- 	 */
- 	 	$('.Pagination').pager({
-		      currPage: 1,
-		      pageNOName: "pn",
-		      form: "searchForm",
-		      pageCount: 30,
-		      pageSize:  5 
-		});
-		
-	$(".workplace dd").not('.more').children('a').click(function(){
-		$('#lc').val(1);
-		editForm("cityInput" , $(this).html());
-	});
-	
-	$("#box_expectCity dd span").click(function(){
-		$('#lc').val(1);
-		editForm("cityInput" , $(this).html());
-	});
-	
+$(function(){	
 	$('#options dd div').click(function(){
 		var firstName = $(this).parents('dl').children('dt').text();
 		var fn = $.trim(firstName);
 		if (fn=="月薪范围"){
-			editForm("yxInput" , $(this).html());
+			var val=$(this).html();
+			$('#yxInput').attr('value',val);
+			var par=window.location.search;
+			if(par==''){
+				location.href='job_list'+par+'?yx='+val;
+			}else{
+				location.href='job_list'+par+'&yx='+val;
+			}			
 		}
 		else if(fn=="工作经验"){
-			editForm("gjInput" , $(this).html());
+			var val=$(this).html();
+			var par=window.location.search;
+			if(par==''){
+				location.href='job_list'+par+'?gj='+val;
+			}else{
+				location.href='job_list'+par+'&gj='+val;
+			}	
 		}
 		else if(fn=="最低学历"){
-			editForm("xlInput" , $(this).html());
+			var val=$(this).html();
+			var par=window.location.search;
+			if(par==''){
+				location.href='job_list'+par+'?xl='+val;
+			}else{
+				location.href='job_list'+par+'&xl='+val;
+			}	
 		}
 		else if(fn=="工作性质"){
-			editForm("gxInput" , $(this).html());
+			var val=$(this).html();
+			var par=window.location.search;
+			if(par==''){
+				location.href='job_list'+par+'?gx='+val;
+			}else{
+				location.href='job_list'+par+'&gx='+val;
+			}	
 		}
 		else if(fn=="发布时间"){
-			editForm("stInput" , $(this).html());
+			var val=$(this).html();
+			var par=window.location.search;
+			if(par==''){
+				location.href='job_list'+par+'?st='+val;
+			}else{
+				location.href='job_list'+par+'&st='+val;
+			}	
 		}
-	});
-	
-	$('#selected ul').delegate('li span.select_remove','click',function(event){
-		var firstName = $(this).parent('li').find('strong').text();
-		var fn = $.trim(firstName);
-		if (fn=="月薪范围")
-			editForm("yxInput" , "");
-		else if(fn=="工作经验")
-			editForm("gjInput" , "");
-		else if(fn=="最低学历")
-			editForm("xlInput" , "");
-		else if(fn=="工作性质")
-			editForm("gxInput" , "");
-		else if(fn=="发布时间")
-			editForm("stInput" , "");
-	});
-	
+	});	
 	/* search结果飘绿	*/
 	(function($) {
 		var searchVal = $('#search_input').val();
@@ -274,14 +232,34 @@ $(function(){
 			success:function(msg){
 				var str='';
 				$.each(msg,function(k,v){
-					str+='<option value="'+v.id+'">'+v.categoryname+'</option>';
+					str+='<option value="'+v.categoryname+'">'+v.categoryname+'</option>';					
 				})
-				$('#aa').after(str);
+				$('#bb').after(str);
 			}
 		})
-
 	})
-	
+	$('#aa').change(function(){
+		var obj=$(this);
+		var option=$('#change option');
+		for(var i=0;i<option.length;i++){
+			if(option.eq(i).prop('selected')){
+				var province=option.eq(i).html();
+			}
+		}
+		var option1=$('#aa option');
+		for(var i=0;i<option1.length;i++){
+			if(option1.eq(i).prop('selected')){
+				var place=option1.eq(i).html();
+			}
+		}
+		var city=province+'/'+place;
+		var par=window.location.search;
+		if(par==''){
+			location.href='job_list'+par+'?city='+city;
+		}else{
+			location.href='job_list'+par+'&city='+city;
+		}	
+	})	
 });
 
 function editForm(inputId,inputValue){
@@ -291,15 +269,14 @@ function editForm(inputId,inputValue){
 	var re = /#/g;
 	var r = /\./g;
 	var kw = keyword.replace(reg," ");
-
 	if(kw == ''){
-		$('#searchForm').attr('action','list.html所有职位').submit();	
+		$('#searchForm').attr('action','').submit();	
 	}else{
 		kw = kw.replace(re,'井');
 		kw = kw.replace(r,'。');
-		$('#searchForm').attr('action','list.html'+kw).submit();
+		$('#searchForm').attr('action','').submit();
 	}
-	//$("#searchForm").submit();
+	// $("#searchForm").submit();
 }
 </script>
 

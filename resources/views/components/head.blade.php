@@ -18,7 +18,7 @@ $utype=Session::get('utype');
 
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
-var ctx = "h";
+// var ctx = "h";
 console.log(1);
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
@@ -39,6 +39,11 @@ console.log(1);
 var youdao_conv_id = 271546; 
 </script> 
 <script type="text/javascript" src="style/js/conv.js"></script>
+<style>
+.Pagination ul li{
+    list-style-type:none;
+}
+</style>
 </head>
 <body>
 <div id="body">
@@ -66,7 +71,7 @@ var youdao_conv_id = 271546;
                     @else
                         <dd><a rel="nofollow" href="{{URL::to('company')}}">企业中心</a></dd>
                     @endif
-                    <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+                    <dd class="logout"><a rel="nofollow" href="{{URL::to('logout')}}">退出</a></dd>
                 </dl>
              @else               
             <ul class="loginTop">

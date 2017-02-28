@@ -78,4 +78,11 @@ class RegisterController extends Controller
 			echo 1;
 		}		
 	}
+	//退出
+	public function logout()
+	{
+		Session::flush();
+		//销毁所有session
+		return redirect('login')->with('退出成功');
+	}
 }

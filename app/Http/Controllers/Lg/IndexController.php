@@ -15,6 +15,17 @@ class IndexController extends Controller
 		$job1=$job->select();
 		$data['job']=$this->get_job($job1);
 		// dd($data['job']);
+        $jobs=new \App\Models\Jobs;
+        $where='';
+        foreach ($data['hot'] as $k => $v) {
+            $w_word=$v['w_word'];
+           $where.=" or qs_jobs.category_cn like '%$w_word%'";
+        }
+        $where1=substr($where,4);
+        // dd($where1);
+        $data['hot_job']=$jobs->get_hot($where1);
+        $data['new']=$jobs->get_new();
+        // dd($data['hot_job']); 
 		return view('lg.index',$data);
 	}
 	//职位分类重新排序
