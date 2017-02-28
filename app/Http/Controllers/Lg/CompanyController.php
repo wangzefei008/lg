@@ -12,6 +12,7 @@ use App\Models\Jobs;
 use App\Models\CategoryJobs;
 use Illuminate\Support\Facades\Input;
 use App\Models\CompanyProfile;
+use App\Models\CompanyLabelResume;
 
 class CompanyController extends Controller
 {
@@ -27,6 +28,8 @@ class CompanyController extends Controller
     	$data = $model->select($uid);
     	$data['email'] = $email;
     	$data['data'] = $data;
+        $data['count'] = '';
+        $data['status'] = '';
     	return view('lg.positions',$data);
     }
 
@@ -76,6 +79,9 @@ class CompanyController extends Controller
     {
     	$data = Input::all();
     	$data['addtime'] = time();
+        $data['deadline'] = time()+30*24*60*60;
+    	$data['uid'] = session('uid');
+    	// dd($data);
     	$model = new Jobs;
     	$info = $model->add($data);
     	if($info)
@@ -91,13 +97,20 @@ class CompanyController extends Controller
     //展示企业信息
     public function mymessage()
     {
-    	echo 'ok';
+        //获取当前公司信息
+        $uid = session('uid');
+        $model = new CompanyProfile;
+        $data = $model->selectUid($uid);
+        $arr['data'] = $data;
+        // dd($data);
+    	return view('lg.myhome',$arr);
     }
 
     //完善信息
     public function my_message()
     {
-    	return view('lg.my_message');
+        $arr['status'] = 6;
+    	return view('lg.my_message',$arr);
     }
 
     //接收完善好的信息
@@ -118,7 +131,7 @@ class CompanyController extends Controller
 			$filename = date('Ymd_His') . '_' . uniqid() . '.' . $ext;
 			// 使用我们新建的uploads本地存储空间（目录）
 			$file -> move('uploads',$filename);
-			$logo = '/public/uploads/'.$filename;
+			$logo = 'uploads/'.$filename;
     		$data['logo'] = $logo;
     	}
     	$data = array_filter($data);
@@ -155,6 +168,76 @@ class CompanyController extends Controller
     		}
     	}
 
+    }
+
+    //待处理简历
+    public function labelresume()
+    {
+    	$uid = session('uid');
+    	$resume_state = 0;
+    	$model = new CompanyLabelResume;
+    	$data = $model->resumeProcessed($uid,$resume_state);
+        $count = $model->count($uid,$resume_state);
+    	$arr['data'] = $data;
+    	$arr['count'] = $count;
+        $arr['status'] = 1;
+    	return view('lg.labelresume',$arr);
+    }
+
+    //已通知简历
+    public function notice()
+    {
+        $uid = session('uid');
+        $resume_state = 1;
+        $model = new CompanyLabelResume;
+        $data = $model->resumeProcessed($uid,$resume_state);
+        $count = $model->count($uid,$resume_state);
+        $arr['data'] = $data;
+        $arr['count'] = $count;
+        $arr['status'] = 2;
+        return view('lg.notice',$arr);
+    }
+
+    //不合适简历
+    public function unnotice()
+    {
+        $uid = session('uid');
+        $resume_state = 2;
+        $model = new CompanyLabelResume;
+        $data = $model->resumeProcessed($uid,$resume_state);
+        $count = $model->count($uid,$resume_state);
+        $arr['data'] = $data;
+        $arr['count'] = $count;
+        $arr['status'] = 3;
+        return view('lg.unnotice',$arr);
+    }
+
+    //有效职位
+    public function effective()
+    {
+        $uid = session('uid');
+        $deadline = time();
+        $model = new Jobs;
+        $data = $model->selectYes($uid,$deadline);
+        $count = $model->countYes($uid,$deadline);
+        $arr['data'] = $data;
+        $arr['count'] = $count;
+        $arr['status'] = 4;
+        return view('lg.effective',$arr);
+    }
+
+    //失效职位
+    public function online()
+    {
+        $uid = session('uid');
+        $deadline = time();
+        $model = new Jobs;
+        $data = $model->selectNo($uid,$deadline);
+        $count = $model->countNo($uid,$deadline);
+        $arr['data'] = $data;
+         $arr['count'] = $count;
+        $arr['status'] = 5;
+        return view('lg.online',$arr);
     }
 }
 

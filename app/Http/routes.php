@@ -50,9 +50,19 @@ Route::any('/company_mymessage','Lg\CompanyController@mymessage');
 Route::any('/company_my_message','Lg\CompanyController@my_message');
 //企业信息完善验证
 Route::any('/company_my_message_pro','Lg\CompanyController@my_message_pro');
+//待处理简历
+Route::any('/labelresume','Lg\CompanyController@labelresume');
+//已通知简历
+Route::any('/notice','Lg\CompanyController@notice');
+//不合适简历
+Route::any('/unnotice','Lg\CompanyController@unnotice');
+//有效职位
+Route::any('effective','Lg\CompanyController@effective');
+//失效职位
+Route::any('online','Lg\CompanyController@online');
 
 //验证邮箱的唯一性
 Route::get('/job_list','Lg\JobController@index');
 //招聘信息首页
 Route::any('/get_district','Lg\JobController@get_district');
-//获取城市
+

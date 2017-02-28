@@ -1,3 +1,6 @@
+@include('components.head')
+@include('components.company')
+
 <center>
 <meta charset="ut-8">
 	<form action="{{ URL::to('company_my_message_pro') }}" method="post" enctype="multipart/form-data">
@@ -51,9 +54,11 @@
 				<td><input type="file" name="logo"></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><a href="{{URL::to('company')}}">返回返回企业中心</a></td>
 				<td><input type="submit" value="确认"></td>
 			</tr>
 		</table>
 	</form>
 </center>
+
+ <script src="style/js/core.min.js" type="text/javascript"></script>

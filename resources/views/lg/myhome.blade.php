@@ -7,7 +7,7 @@
 	                <div class="c_detail">
 	                	<div style="background-color:#fff;" class="c_logo">
 		                	<a title="上传公司LOGO" id="logoShow" class="inline cboxElement" href="#logoUploader">
-		                				                			<img width="190" height="190" alt="公司logo" src="style/images/logo_default.png">
+		                				                			<img width="190" height="190" alt="公司logo" src="{{ $data[0]['logo']}}">
 	                        		                        	
 	                        	<span>更换公司图片<br>190px*190px 小于5M</span>
 	                        </a>
@@ -25,24 +25,24 @@
 						     -->
 		                
 	                    <div class="c_box companyName">
-	                    		                   			<h2 title="{{ $data['username'] }}">{{ $data['username'] }}</h2>
+	                    		                   			<h2 title="{{ $data[0]['companyname'] }}">{{ $data[0]['companyname'] }}</h2>
 	                   			                        
 	                        	                        	<em class="unvalid"></em>
                         		<span class="va dn">拉勾未认证企业</span>
 	                        	<a target="_blank" class="applyC" href="http://www.lagou.com/c/auth.html">申请认证</a>
 	                        	                        <div class="clear"></div>
 	                       	
-	                       		                   			<h1 title="福建平潭协创进出口贸易有限公司" class="fullname">{{ $data['email'] }}</h1>
+	                       		                   			<h1 title="福建平潭协创进出口贸易有限公司" class="fullname">{{ $data[0]['companyname'] }}</h1>
 	                        	                        
 	                        <form class="clear editDetail dn" id="editDetailForm">
 	                            <input type="text" placeholder="请输入公司简称" maxlength="15" value="平潭协创进出口贸易有限公司" name="companyShortName" id="companyShortName">
-	                            <input type="text" placeholder="一句话描述公司优势，核心价值，限50字" maxlength="50" value="测试的发打发打发大范德萨发" name="companyFeatures" id="companyFeatures">
+	                            <input type="text" placeholder="一句话描述公司优势，核心价值，限50字" maxlength="50" value="" name="companyFeatures" id="companyFeatures">
 	                            <input type="hidden" value="25927" id="companyId" name="companyId">
 	                            <input type="submit" value="保存" id="saveDetail" class="btn_small">
 	                            <a id="cancelDetail" class="btn_cancel_s" >取消</a>
 		                    </form>
 	                            
-	                        <div class="clear oneword"><img width="17" height="15" src="style/images/quote_l.png">&nbsp; <span>测试的发打发打发大范德萨发</span> &nbsp;<img width="17" height="15" src="style/images/quote_r.png"></div>
+	                        <div class="clear oneword"><img width="17" height="15" src="style/images/quote_l.png">&nbsp; <span>{{ $data[0]['contents'] }}</span> &nbsp;<img width="17" height="15" src="style/images/quote_r.png"></div>
 	                        <h3 class="dn">已选择标签</h3>
 	                        <ul style="overflow:auto" id="hasLabels" class="reset clearfix">
 	                        			                        	<li><span>年终分红</span></li>
@@ -115,7 +115,7 @@
 					                            <div class="cp_intro">
 					                               	<input type="text" placeholder="请输入产品名称" value="发大发" name="product">	
 					                                <input type="text" placeholder="请输入产品网址" value="http://www.weimob.com" name="productUrl">	
-					                                <textarea placeholder="请简短描述该产品定位、产品特色、用户群体等" maxlength="500" value="发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf" class="s_textarea" name="productProfile">发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf</textarea>	
+					                                <textarea placeholder="请简短描述该产品定位、产品特色、用户群体等" maxlength="500" value="{{ $data[0]['trade_cn']}}" class="s_textarea" name="productProfile">{{ $data[0]['trade_cn']}}</textarea>	
 					                                <div class="word_count fr">你还可以输入 <span>500</span> 字</div>
 					                                <div class="clear"></div>
 					                                <input type="submit" value="保存" class="btn_small">
@@ -131,12 +131,12 @@
 					                    	<h2><em></em>公司产品</h2>
 					                    </dt>
 					                    <dd>
-					                    	<img width="380" height="220" alt="发大发" src="style/images/product_default.png">
+					                    	<img width="380" height="220" alt="{{ $data[0]['nature_cn']}}" src="style/images/product_default.png">
 				                        	<div class="cp_intro">
-				                        						                        		<h3><a target="_blank" href="http://www.weimob.com">发大发 </a></h3>
+				                        						                        		<h3><a target="_blank" href="http://www.weimob.com">{{ $data[0]['nature_cn']}} </a></h3>
 					                            <div class="scroll-pane" style="overflow: hidden; padding: 0px; width: 260px;">
 					                            	
-					                            <div class="jspContainer" style="width: 260px; height: 140px;"><div class="jspPane" style="padding: 0px; top: 0px; width: 260px;"><div>发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf发达发生的faf</div></div></div></div>
+					                            <div class="jspContainer" style="width: 260px; height: 140px;"><div class="jspPane" style="padding: 0px; top: 0px; width: 260px;"><div>{{ $data[0]['trade_cn']}}</div></div></div></div>
 					                        </div>
 					                        <a title="编辑公司产品" class="c_edit product_edit" href="javascript:void(0)"></a>
 					            								            			<a title="新增公司产品" class="c_add product_add" href="javascript:void(0)"></a>
@@ -167,7 +167,7 @@
 					                    </dt>
 					                    <dd>
 						                    <form id="companyDesForm">
-						                        <textarea placeholder="请分段详细描述公司简介、企业文化等" name="companyProfile" id="companyProfile">该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎</textarea>		                                        
+						                        <textarea placeholder="请分段详细描述公司简介、企业文化等" name="companyProfile" id="companyProfile">{{ $data[0]['contents']}}</textarea>		                                        
 						                        <div class="word_count fr">你还可以输入 <span>1000</span> 字</div>
 						                        <div class="clear"></div>
 						                        <input type="submit" value="保存" id="submitProfile" class="btn_small">
@@ -182,7 +182,7 @@
 					                   		<h2><em></em>公司介绍</h2>
 					                   	</dt>
 					                   	<dd>
-					                   		<div class="c_intro">该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎该方法嘎嘎</div>
+					                   		<div class="c_intro">{{ $data[0]['contents']}}</div>
 					                   		<a title="编辑公司介绍" id="editIntro" class="c_edit" href="javascript:void(0)"></a>
 					                   	</dd>
 					               	</dl>
@@ -516,7 +516,7 @@
 		  <param value="../../Scripts/expressInstall.swf" name="expressinstall">
 		  <!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
 		  <!--[if !IE]>-->
-		  <object width="650" height="470" data="../../flash/avatar.swf?url=http://www.lagou.com/cd/saveProfileLogo.json" type="application/x-shockwave-flash">
+		 <!--  <object width="650" height="470" data="../../flash/avatar.swf?url=http://www.lagou.com/cd/saveProfileLogo.json" type="application/x-shockwave-flash"> -->
 		    <!--<![endif]-->
 		    <param value="high" name="quality">
 		    <param value="opaque" name="wmode">

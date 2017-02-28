@@ -24,4 +24,32 @@ class Jobs extends Model
     	$info = $this->save();
     	return $info;
     }
+
+    //根据uid及deadline查询 有效
+    public function selectYes($uid,$deadline)
+    {
+       $data = $this->where('uid',$uid)->where('deadline','>',$deadline)->paginate(2);
+       return $data;
+    }
+
+    //根据uid及deadline查询 失效
+    public function selectNo($uid,$deadline)
+    {
+       $data = $this->where('uid',$uid)->where('deadline','<',$deadline)->paginate(2);
+       return $data;
+    }
+
+    //统计有效总数
+    public function countYes($uid,$deadline)
+    {
+        $count = $this->where('uid',$uid)->where('deadline','>',$deadline)->count();
+        return $count;
+    }
+
+    //统计失效总数
+    public function countNo($uid,$deadline)
+    {
+        $count = $this->where('uid',$uid)->where('deadline','<',$deadline)->count();
+        return $count;
+    }
 }
