@@ -14,8 +14,8 @@
 
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
-var ctx = "h";
-console.log(1);
+//var ctx = "h";
+//console.log(1);
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/css/style.css"/>
@@ -44,10 +44,9 @@ var youdao_conv_id = 271546;
                 <li class="current"><a href="index.html">首页</a></li>
                 <li ><a href="companylist.html" >公司</a></li>
                 <li ><a href="#" target="_blank">招聘信息</a></li>
-                <li ><a href="#" target="_blank">求职信息</a></li>
+                <li ><a href="{{URL::to('want')}}" target="_blank">求职信息</a></li>
                 <li ><a href="#" target="_blank">发布职位</a></li>
             </ul>
-            <!-- {{$email}} -->
              @if(!empty($email))
                 <dl class="collapsible_menu">
                     <dt>

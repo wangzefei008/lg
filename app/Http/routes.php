@@ -37,6 +37,10 @@ Route::post('/register_do','Lg\RegisterController@register_do');
 Route::get('/login','Lg\RegisterController@login');
 Route::post('/login_do','Lg\RegisterController@login_do');
 Route::post('/check_email','Lg\RegisterController@check_email');
+Route::get('want','Lg\Job_wantController@want_index');
+Route::get('hotmore','Lg\Job_wantController@want_more');//求职信息热门查看更多
+Route::get('wantInfo','Lg\Job_wantController@want_info');//求职信息查看详情
+Route::get('wantSearch','Lg\Job_wantController@wantSearch');//求职信息查看详情
 Route::get('test',function(){
 	Session::put('uname','lisi');
 	
