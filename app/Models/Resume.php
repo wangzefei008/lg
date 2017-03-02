@@ -124,3 +124,4 @@ class Resume extends Model
         return $page;
 
 }
+}

@@ -56,16 +56,11 @@ var youdao_conv_id = 271546;
                 <img src="style/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
             </a>
             <ul class="reset" id="navheader">
-                <li class="current"><a href="index.html">首页</a></li>
+                <li class="current"><a href="{{URL::to('/')}}">首页</a></li>
                 <li ><a href="companylist.html" >公司</a></li>
-<<<<<<< HEAD
-                <li ><a href="#" target="_blank">招聘信息</a></li>
+                <li ><a href="{{URL::to('job_list')}}" target="_blank">招聘信息</a></li>
                 <li ><a href="{{URL::to('want')}}" target="_blank">求职信息</a></li>
                 <li ><a href="#" target="_blank">发布职位</a></li>
-=======
-                <li ><a href="{{URL::to('job_list')}}" target="_blank">招聘信息</a></li>
-                <li ><a href="#" target="_blank">求职信息</a></li>
->>>>>>> 5d700f4fc05063b08e9f291a3bf2e568500890a4
             </ul>
              @if(!empty($email))
                 <dl class="collapsible_menu">
