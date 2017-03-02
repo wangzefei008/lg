@@ -23,6 +23,7 @@ class CompanyLabelResume extends Model
     	$data = $this
     	->join('resume','company_label_resume.resume_id','=','resume.id')
     	->where(['clr_uid'=>$uid,'resume_state'=>$resume_state])->Paginate(3);
+        // dd($data);
     	return $data;
     }
 

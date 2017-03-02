@@ -40,5 +40,13 @@ class CompanyProfile extends Model
     	return $info;
     }
 
+    //查询全部数据（未到期）
+    public function selectAll()
+    {
+        $data = $this->paginate(9);
+        // $data = $this->simplePaginate(9);
+        return $data;
+    }
+
     
 }

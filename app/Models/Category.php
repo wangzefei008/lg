@@ -22,4 +22,11 @@ class Category extends Model
 		$data = $this->all()->toArray();
 		return $data;
 	}
+
+    //根据$c_alias查询行业领域
+    public function selectCategory($c_alias)
+    {
+        $data = $this->where('c_alias',$c_alias)->get()->toArray();
+        return $data;
+    }
 }

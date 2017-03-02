@@ -26,12 +26,12 @@
 		            </h3>
 		            <span class="fr">投递时间：2014-07-01 17:08</span>
 		            <div> 
-		            	jason  			                                        	 / 男 			                                        	/ 大专 			                                        	/ 3年  			                                        	/ 广州 			                                            			                                        		<br>
-		                	高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学
+		            	{{ $v['jobs_name'] }}	                                        		<br>
+		                	{{ $v['category_cn'] }}  | {{ $v['education_cn'] }} 
 		                			                                        </div>
 		            <div class="jdpublisher">
 		                <span>
-		                	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">随便写</a>
+		                	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{ $v['nature_cn'] }}</a>
 		               						                                        </span>
 		            </div>
 		        </div>

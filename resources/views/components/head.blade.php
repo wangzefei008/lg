@@ -29,9 +29,7 @@ console.log(1);
 <script type="text/javascript" src="style/js/jquery.lib.min.js"></script>
 <script src="style/js/ajaxfileupload.js" type="text/javascript"></script>
 <script type="text/javascript" src="style/js/additional-methods.js"></script>
-<link rel="stylesheet" href="style/css/bootstrap.min.css">
-<!-- <script src="style/js/jquery.min.js"></script> -->
-<script src="style/js/bootstrap.min.js"></script>
+
 <!--[if lte IE 8]>
     <script type="text/javascript" src="style/js/excanvas.js"></script>
 <![endif]-->
@@ -53,10 +51,10 @@ var youdao_conv_id = 271546;
                 <img src="style/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
             </a>
             <ul class="reset" id="navheader">
-                <li class="current"><a href="index.html">首页</a></li>
-                <li ><a href="companylist.html" >公司</a></li>
-                <li ><a href="{{URL::to('job_list')}}" target="_blank">招聘信息</a></li>
-                <li ><a href="#" target="_blank">求职信息</a></li>
+                <li class="current"><a href="{{URL::to('/')}}">首页</a></li>
+                <li ><a href="{{ URL::to('companylist') }}" >公司</a></li>
+                <li ><a href="{{URL::to('job_list')}}" >招聘信息</a></li>
+                <li ><a href="javascript:;" >求职信息</a></li>
             </ul>
             <!-- {{$email}} -->
              @if(!empty($email))

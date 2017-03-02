@@ -68,3 +68,10 @@ Route::get('/job_list','Lg\JobController@index');
 //招聘信息首页
 Route::any('/get_district','Lg\JobController@get_district');
 
+//全部公司展示
+Route::any('/companylist','Lg\CompanyListController@index');
+
+//第三方登录
+Route::get('/qqlogin','Lg\TestController@qqlogin');
+Route::get('/qq','Lg\TestController@qq');
+

@@ -1,4 +1,6 @@
-
+<link rel="stylesheet" href="style/css/bootstrap.min.css">
+<!-- <script src="style/js/jquery.min.js"></script> -->
+<script src="style/js/bootstrap.min.js"></script>
     <div id="container">
                     <div class="sidebar">
                                 <a class="btn_create" href="create.html">发布新职位</a>
