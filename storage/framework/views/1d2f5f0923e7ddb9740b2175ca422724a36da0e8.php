@@ -28,6 +28,7 @@
 		<!-- 职位分类  end -->
 		<div class="menu_box"></div>
 		</div>
+		<script src="style/js/home.min.js"></script>
     </div>
 		<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
         <div class="content">	
@@ -53,9 +54,7 @@
 	<dt>热门搜索：</dt>
 	<?php foreach($hot as $k=>$v): ?>
 		<dd><a href="job_list?kd=<?php echo e($v['w_word']); ?>"><?php echo e($v['w_word']); ?></a></dd>
-	<?php endforeach; ?>
-	
-	
+	<?php endforeach; ?>	
 </dl>			
 			<div id="home_banner">
 	            <ul class="banner_bg">
@@ -187,7 +186,7 @@
 			        </div> 
 					<div class="hot_pos_r">
 			            <div class="apply">
-			                <a href="toudi.html" target="_blank">投个简历</a>
+			                <a href="toudi?j_id=<?php echo e($v['id']); ?>" target="_blank">投个简历</a>
 			            </div>
 			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank"><?php echo e($v['companyname']); ?></a></div>
                         <span><em class="c7">领域： </em><?php echo e($v['trade_cn']); ?></span>
@@ -196,7 +195,7 @@
 			        </div>
 			    </li>
 			    <?php endforeach; ?>		
-	                <a href="list.html" class="btn fr" target="_blank">查看更多</a>
+	                <a href="job_list" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
 	            <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
 	            	<?php foreach($new as $k=>$v): ?>
@@ -217,7 +216,7 @@
 			        </div> 
 					<div class="hot_pos_r">
 			            <div class="apply">
-			                <a href="toudi.html" target="_blank">投个简历</a>
+			                <a href="toudi?j_id=<?php echo e($v['id']); ?>" target="_blank">投个简历</a>
 			            </div>
 			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank"><?php echo e($v['companyname']); ?></a></div>
                         <span><em class="c7">领域： </em><?php echo e($v['trade_cn']); ?></span>
@@ -226,7 +225,7 @@
 			        </div>
 			    </li>
 			    <?php endforeach; ?>		
-	                <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
+	                <a href="job_list" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
             </div>
             
@@ -298,9 +297,10 @@
 	</div>
 </div>
  -->
-<!-------------------------------------弹窗lightbox  ----------------------------------------->
+<!---弹窗lightbox  ->
+
+	<! 登录框 -->
 <div style="display:none;">
-	<!-- 登录框 -->
 	<div id="loginPop" class="popup" style="height:240px;">
        	<form id="loginForm">
 			<input type="text" id="email" name="email" tabindex="1" placeholder="请输入登录邮箱地址" />
@@ -319,14 +319,14 @@
 		</div>
     </div><!--/#loginPop-->
 </div>
-<!------------------------------------- end ----------------------------------------->
+<!--- end ->
 <script type="text/javascript" src="style/js/Chart.min.js"></script>
 <script type="text/javascript" src="style/js/home.min.js"></script>
 <script type="text/javascript" src="style/js/count.js"></script>
 			<div class="clear"></div>
 			<input type="hidden" id="resubmitToken" value="" />
 	    	<a id="backtop" title="回到顶部" rel="nofollow"></a>
-	    </div><!-- end #container -->
+	    </div><! end #container -->
 	</div><!-- end #body -->
 	<div id="footer">
 		<div class="wrapper">

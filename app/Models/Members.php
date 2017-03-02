@@ -30,4 +30,8 @@ class Members extends Model
     public function select($uid){
         return $this->find($uid)->toArray();
     }
+    //重置密码
+    public function reset_pwd($email,$password){
+        return $this->where('email', $email)->update(['password' => $password]);
+    }
 }

@@ -31,6 +31,7 @@ class CompanyListController extends Controller
     	$arr['data_city'] = $data_city;
         $arr['data_category'] = $data_category;
         $arr['data_profile'] = $data_profile;
+        $arr['status'] = 2;
         // dd($data_profile);
     	return view('lg.companylist',$arr);
     }

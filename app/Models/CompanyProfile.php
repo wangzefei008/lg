@@ -40,11 +40,20 @@ class CompanyProfile extends Model
     	return $info;
     }
 
+
     //查询全部数据（未到期）
     public function selectAll()
     {
         $data = $this->paginate(9);
         // $data = $this->simplePaginate(9);
+        return $data;
+    }
+
+
+     //根据c_id查询
+    public function selectCid($c_id)
+    {
+        $data = $this->where('c_id', $c_id )->first()->toArray();
         return $data;
     }
 

@@ -25,7 +25,8 @@ class IndexController extends Controller
         // dd($where1);
         $data['hot_job']=$jobs->get_hot($where1);
         $data['new']=$jobs->get_new();
-        // dd($data['hot_job']); 
+        $data['status'] = 1;
+        // dd($data['status']); 
 		return view('lg.index',$data);
 	}
 	//职位分类重新排序

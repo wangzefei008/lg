@@ -5,6 +5,9 @@ $utype=Session::get('utype');
 <!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
+    <style>
+        li{list-style: none}
+    </style>
 <script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="alternate" media="handheld"  />
@@ -15,11 +18,12 @@ $utype=Session::get('utype');
 <meta content="" name="description">
 <meta content="" name="keywords">
 <meta name="baidu-site-verification" content="QIQ6KC1oZ6" />
-
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
+
 // var ctx = "h";
 console.log(1);
+
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/css/style.css"/>
@@ -51,12 +55,11 @@ var youdao_conv_id = 271546;
                 <img src="style/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
             </a>
             <ul class="reset" id="navheader">
-                <li class="current"><a href="{{URL::to('/')}}">首页</a></li>
-                <li ><a href="{{ URL::to('companylist') }}" >公司</a></li>
-                <li ><a href="{{URL::to('job_list')}}" >招聘信息</a></li>
-                <li ><a href="javascript:;" >求职信息</a></li>
+                <li @if($status == 1) class="current" @endif><a href="{{URL::to('/')}}">首页</a></li>
+                <li @if($status == 2) class="current" @endif ><a href="{{ URL::to('companylist') }}" >公司</a></li>
+                <li @if($status == 3) class="current" @endif><a href="{{URL::to('job_list')}}" >招聘信息</a></li>
+                <li @if($status == 4) class="current" @endif><a href="{{URL::to('hotmore')}}" >求职信息</a></li>
             </ul>
-            <!-- {{$email}} -->
              @if(!empty($email))
                 <dl class="collapsible_menu">
                     <dt>
@@ -65,7 +68,7 @@ var youdao_conv_id = 271546;
                         <i></i>
                     </dt>
                     @if(!empty($utype)&&$utype==2)
-                        <dd><a rel="nofollow" href="">个人中心</a></dd>
+                        <dd><a rel="nofollow" href="person">个人中心</a></dd>
                     @else
                         <dd><a rel="nofollow" href="{{URL::to('company')}}">企业中心</a></dd>
                     @endif
@@ -78,6 +81,5 @@ var youdao_conv_id = 271546;
                 <li><a href="{{URL::to('register')}}" rel="nofollow">注册</a></li>
             </ul>
             @endif
-                                </div>
+         </div>
     </div><!-- end #header -->
-    
