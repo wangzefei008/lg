@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
 
+use DB;
 class Resume extends Model
 {
     protected  $table='resume';
+
     protected  $primaryKey='id';
     protected  $guarded=['id'];
     public $timestamps=false;
@@ -21,7 +22,6 @@ class Resume extends Model
        return  $this->save();
 
        // dd(response()->json(DB::getQueryLog()));
-
     }
     //查询简历
     public function select($uid){

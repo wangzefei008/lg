@@ -1,317 +1,45 @@
 ﻿@include('components.head')
-    <div id="container">
-        				
-		<div id="sidebar">
-			<div class="mainNavs">
-						
-									<div class="menu_box">
-						<div class="menu_main">
-							<h2>技术 <span></span></h2>
-											            					            		<a href="h/jobs/list_Java?labelWords=label">Java</a>
-				<a href="h/jobs/list_PHP?labelWords=label">PHP</a>
-				<a href="h/jobs/list_C?labelWords=label">C</a>
-				<a href="h/jobs/list_C++?labelWords=label">C++</a>
-				<a href="h/jobs/list_Android?labelWords=label">Android</a>
-				<a href="h/jobs/list_iOS?labelWords=label">iOS</a>
-				<a href="h/jobs/list_前端开发?labelWords=label">前端开发</a>
-				<a href="h/jobs/list_测试?labelWords=label">测试</a>
-				<a href="h/jobs/list_技术经理?labelWords=label">技术经理</a>
-				<a href="h/jobs/list_项目经理?labelWords=label">项目经理</a>
-				<a href="h/jobs/list_架构师?labelWords=label">架构师</a>
+<div id="container">
+	<div id="sidebar">
+		<div class="mainNavs">
+		<!-- 职位分类	start -->
+		@foreach($job as $k=>$v)					
+			<div class="menu_box">			
+				<div class="menu_main">
+					<h2>{{$k}} <span></span></h2>
+					<!-- <a href="h/jobs/list_Java?labelWords=label">Java</a> -->
+			   	</div>			   
+				<div class="menu_sub dn">
+					@foreach($v as $k1=>$v1)
+					<dl class="reset">
+						<dt>
+							<a href="">{{$k1}}</a>
+						</dt>
+						<dd>
+						@foreach($v1 as $k2=>$v2)
+							<a href="job_list?kd={{$v2}}">{{$v2}}</a>
+						@endforeach
+						</dd>						
+					</dl>
+					@endforeach
+				</div>				
 			</div>
-					   	<div class="menu_sub dn">
-					   								    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_后端开发?labelWords=label">
-				        									            								            							            								            							            								            							            								            							            								            							            								            						        			发
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_Java?labelWords=label"
-										   		
-										   		 									            										            											            			c
-									            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Java</a>
-							            										   	<a href="h/jobs/list_C%2B%2B?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											     "
-									            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>C++</a>
-							            										   	<a href="h/jobs/list_PHP?labelWords=label"
-										   		
-										   		 									            										            											            										            											            			c
-									            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>PHP</a>
-							            										   	<a href="h/jobs/list_%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>数据挖掘</a>
-							            										   	<a href="h/jobs/list_C?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											           "
-									            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>C</a>
-							            										   	<a href="h/jobs/list_C%23?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>C#</a>
-							            										   	<a href="h/jobs/list_.NET?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>.NET</a>
-							            										   	<a href="h/jobs/list_Hadoop?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Hadoop</a>
-							            										   	<a href="h/jobs/list_Python?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Python</a>
-							            										   	<a href="h/jobs/list_Delphi?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Delphi</a>
-							            										   	<a href="h/jobs/list_VB?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>VB</a>
-							            										   	<a href="h/jobs/list_Perl?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Perl</a>
-							            										   	<a href="h/jobs/list_Ruby?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Ruby</a>
-							            										   	<a href="h/jobs/list_Node.js?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Node.js</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_移动开发?labelWords=label">
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_HTML5?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>HTML5</a>
-							            										   	<a href="h/jobs/list_Android?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            			"
-									            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Android</a>
-							            										   	<a href="h/jobs/list_iOS?labelWords=label"
-										   		
-									            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>iOS</a>
-							            										   	<a href="h/jobs/list_WP?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>WP</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_前端开发?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				前端开发
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_web%E5%89%8D%E7%AB%AF?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>web前端</a>
-							            										   	<a href="h/jobs/list_Flash?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Flash</a>
-							            										   	<a href="h/jobs/list_html5?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>html5</a>
-							            										   	<a href="h/jobs/list_JavaScript?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>JavaScript</a>
-							            										   	<a href="h/jobs/list_U3D?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>U3D</a>
-							            										   	<a href="h/jobs/list_COCOS2D-X?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>COCOS2D-X</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_测试?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				测试
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>测试工程师</a>
-							            										   	<a href="h/jobs/list_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>自动化测试</a>
-							            										   	<a href="h/jobs/list_%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>功能测试</a>
-							            										   	<a href="h/jobs/list_%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>性能测试</a>
-							            										   	<a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>测试开发</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_运维?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				运维
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>运维工程师</a>
-							            										   	<a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>运维开发工程师</a>
-							            										   	<a href="h/jobs/list_%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>网络工程师</a>
-							            										   	<a href="h/jobs/list_%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>系统工程师</a>
-							            										   	<a href="h/jobs/list_IT%E6%94%AF%E6%8C%81?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>IT支持</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_DBA?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				DBA
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_MySQL?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>MySQL</a>
-							            										   	<a href="h/jobs/list_SQLServer?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>SQLServer</a>
-							            										   	<a href="h/jobs/list_Oracle?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>Oracle</a>
-							            										   	<a href="h/jobs/list_DB2?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>DB2</a>
-							            										   	<a href="h/jobs/list_MongoDB?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>MongoDB</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_项目管理?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				项目管理
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86?labelWords=label"
-										   		
-									            											            										            											            										            										   		
-										   	>项目经理</a>
-							            							        </dd>
-					        	</dl>
-													    	<dl class="reset">
-					        							        		<dt>
-					        			<a href="h/jobs/list_高端技术职位?labelWords=label">
-					        									            								            								            							            								            							            								            							            								            							            								            							            								            						        				高端职位
-					        			</a>
-					        		</dt>
-						        	<dd>
-							        											   	<a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            			class="curr"
-									            											            										            											            										            											            										            										   		
-										   	>技术经理</a>
-							            										   	<a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>技术总监</a>
-							            										   	<a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E7%BB%8F%E7%90%86?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>测试经理</a>
-							            										   	<a href="h/jobs/list_%E6%9E%B6%E6%9E%84%E5%B8%88?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            			class="curr"
-									            											            										            										   		
-										   	>架构师</a>
-							            										   	<a href="h/jobs/list_CTO?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>CTO</a>
-							            										   	<a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E6%80%BB%E7%9B%91?labelWords=label"
-										   		
-										   		 									            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            											            										            										   		
-										   	>运维总监</a>
-							            							        </dd>
-					        	</dl>
-													</div>
-					</div>
-									<div class="menu_box">
-						
-													</div>
-					</div>
-							</div>
-			<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
+		@endforeach
+		<!-- 职位分类  end -->
+		<div class="menu_box"></div>
+		</div>
+    </div>
+		<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
         <div class="content">	
-	        			<div id="search_box">
-		<form id="searchForm" name="searchForm" action="list.html" method="get">
+	        <div id="search_box">
+		<form id="searchForm" name="searchForm" action="job_list" method="get">
         <ul id="searchType">
-        	        	<li data-searchtype="1" class="type_selected">职位</li>
+        	<li data-searchtype="1" class="type_selected">职位</li>
         	<li data-searchtype="4">公司</li>
-        	        </ul>
+        </ul>
         <div class="searchtype_arrow"></div>
         <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
-        <input type="hidden" name="spc" id="spcInput" value=""/>
-        <input type="hidden" name="pl" id="plInput" value=""/>
-        <input type="hidden" name="gj" id="gjInput" value=""/>
-        <input type="hidden" name="xl" id="xlInput" value=""/>
-        <input type="hidden" name="yx" id="yxInput" value=""/>
-        <input type="hidden" name="gx" id="gxInput" value="" />
-        <input type="hidden" name="st" id="stInput" value="" />
-        <input type="hidden" name="labelWords" id="labelWords" value="" />
-        <input type="hidden" name="lc" id="lc" value="" />
-        <input type="hidden" name="workAddress" id="workAddress" value=""/>
-                <input type="hidden" name="city" id="cityInput" value=""/>
-                <input type="submit" id="search_button" value="搜索" />
-				
+        <input type="submit" id="search_button" value="搜索" />				
     </form>
 </div>
 <style>
@@ -323,16 +51,9 @@
 <script type="text/javascript" src="style/js/search.min.js"></script>
 <dl class="hotSearch">
 	<dt>热门搜索：</dt>
-	<dd><a href="list.htmlJava?labelWords=label&city=">Java</a></dd>
-	<dd><a href="list.htmlPHP?labelWords=label&city=">PHP</a></dd>
-	<dd><a href="list.htmlAndroid?labelWords=label&city=">Android</a></dd>
-	<dd><a href="list.htmliOS?labelWords=label&city=">iOS</a></dd>
-	<dd><a href="list.html前端?labelWords=label&city=">前端</a></dd>
-	<dd><a href="list.html产品经理?labelWords=label&city=">产品经理</a></dd>
-	<dd><a href="list.htmlUI?labelWords=label&city=">UI</a></dd>
-	<dd><a href="list.html运营?labelWords=label&city=">运营</a></dd>
-	<dd><a href="list.htmlBD?labelWords=label&city=">BD</a></dd>
-	<dd><a href="list.html?gx=实习&city=">实习</a></dd>
+	@foreach($hot as $k=>$v)
+		<dd><a href="job_list?kd={{$v['w_word']}}">{{$v['w_word']}}</a></dd>
+	@endforeach	
 </dl>			
 			<div id="home_banner">
 	            <ul class="banner_bg">
@@ -446,70 +167,64 @@
             </ul>
                      <div id="hotList">
 	            <ul class="hot_pos reset">
-	            	<li class="clearfix">
-		            	<div class="hot_pos_l">
-			                    	<div class="mb10">
-			                        	<a href="h/jobs/147822.html" target="_blank">运营总监</a> 
-			                            &nbsp;
-			                            <span class="c9">[北京]</span>
-			                            			                        </div>
-			                        <span><em class="c7">月薪： </em>15k-20k</span>
-			                        <span><em class="c7">经验：</em> 3-5年</span>
-			                        <span><em class="c7">最低学历： </em>本科</span>
-			                        <br />
-			                        <span><em class="c7">职位诱惑：</em>发展前景</span>
-			                        <br />
-				                    <span>1天前发布</span>
-			                        <!-- <a  class="wb">分享到微博</a> -->
-			                    </div>
-			                	<div class="hot_pos_r">
-			                    	<div class="mb10 recompany"><a href="h/c/399.html" target="_blank">节操精选</a></div>
-			                        <span><em class="c7">领域：</em> 移动互联网</span>
-			                        			                        <span><em class="c7">创始人：</em>陈桦</span>
-			                        			                        <br />
-			                        <span><em class="c7">阶段：</em> 初创型(天使轮)</span>
-			                        <span><em class="c7">规模：</em>少于15人</span>
-			                        <ul class="companyTags reset">
-			                        	<li>移动互联网</li>
-			                        	<li>五险一金</li>
-			                        	<li>扁平管理</li>
-			                        </ul>
+	            	@foreach($hot_job as $k=>$v)
+	            <li class="odd clearfix">
+			        <div class="hot_pos_l">
+			            <div class="mb10">
+			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
+			                &nbsp;
+			                <span class="c9">{{$v['district_cn']}}</span>
 			            </div>
-			       </li>
-	                <a href="list.html" class="btn fr" target="_blank">查看更多</a>
+			            <span><em class="c7">月薪：</em>{{$v['salaryMin']}}-{{$v['salaryMax']}}</span>
+			            <span><em class="c7">经验：</em>{{$v['experience_cn']}}</span>
+                        <span><em class="c7">最低学历： </em>{{$v['education_cn']}}</span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>{{$v['tag_cn']}}</span>
+                        <br />
+                        <span>{{date('Y-m-d H:i:s',$v['addtime'])}}</span>
+			        </div> 
+					<div class="hot_pos_r">
+			            <div class="apply">
+			                <a href="toudi?j_id={{$v['id']}}" target="_blank">投个简历</a>
+			            </div>
+			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
+                        <span><em class="c7">领域： </em>{{$v['trade_cn']}}</span>
+                        <span><em class="c7">创始人：</em> {{$v['contact']}}</span><br /> 
+                        <span><em class="c7">规模： </em>{{$v['scale_cn']}}</span>
+			        </div>
+			    </li>
+			    @endforeach		
+	                <a href="job_list" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
 	            <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
-	            	<li class="clearfix">
-		            	<div class="hot_pos_l">
-			                    	<div class="mb10">
-			                        	<a href="h/jobs/149389.html" target="_blank">高级PHP研发工程师</a> 
-			                            &nbsp;
-			                            <span class="c9">[南京]</span>
-			                            			                        </div>
-			                        <span><em class="c7">月薪： </em>12k-24k</span>
-			                        <span><em class="c7">经验：</em>3-5年</span>
-			                        <span><em class="c7">最低学历：</em> 本科</span>
-			                        <br />
-			                        <span><em class="c7">职位诱惑：</em>IPO了的互联网创业公司，潜力无限！</span>
-			                        <br />
-				                    <span>15:11发布</span>
-			                        <!-- <a  class="wb">分享到微博</a> -->
-			                    </div>
-			                	<div class="hot_pos_r">
-			                    	<div class="mb10"><a href="h/c/8250.html" target="_blank">途牛旅游网</a></div>
-			                        <span><em class="c7">领域：</em> 电子商务,在线旅游</span>
-			                        			                        <span><em class="c7">创始人：</em>于敦德</span>
-			                        			                        <br />
-			                        <span> <em class="c7">阶段： </em>上市公司</span>
-			                        <span> <em class="c7">规模：</em>500-2000人</span>
-			                        <ul class="companyTags reset">
-			                        	<li>绩效奖金</li>
-			                        	<li>股票期权</li>
-			                        	<li>五险一金</li>
-			                        </ul>
-			             </div>
-			        </li>
-	                <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
+	            	@foreach($new as $k=>$v)
+	            <li class="odd clearfix">
+			        <div class="hot_pos_l">
+			            <div class="mb10">
+			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
+			                &nbsp;
+			                <span class="c9">{{$v['district_cn']}}</span>
+			            </div>
+			            <span><em class="c7">月薪：</em>{{$v['salaryMin']}}-{{$v['salaryMax']}}</span>
+			            <span><em class="c7">经验：</em>{{$v['experience_cn']}}</span>
+                        <span><em class="c7">最低学历： </em>{{$v['education_cn']}}</span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>{{$v['tag_cn']}}</span>
+                        <br />
+                        <span>{{date('Y-m-d H:i:s',$v['addtime'])}}</span>
+			        </div> 
+					<div class="hot_pos_r">
+			            <div class="apply">
+			                <a href="toudi?j_id={{$v['id']}}" target="_blank">投个简历</a>
+			            </div>
+			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
+                        <span><em class="c7">领域： </em>{{$v['trade_cn']}}</span>
+                        <span><em class="c7">创始人：</em> {{$v['contact']}}</span><br /> 
+                        <span><em class="c7">规模： </em>{{$v['scale_cn']}}</span>
+			        </div>
+			    </li>
+			    @endforeach		
+	                <a href="job_list" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
             </div>
             
@@ -581,9 +296,10 @@
 	</div>
 </div>
  -->
-<!-------------------------------------弹窗lightbox  ----------------------------------------->
+<!---弹窗lightbox  ->
+
+	<! 登录框 -->
 <div style="display:none;">
-	<!-- 登录框 -->
 	<div id="loginPop" class="popup" style="height:240px;">
        	<form id="loginForm">
 			<input type="text" id="email" name="email" tabindex="1" placeholder="请输入登录邮箱地址" />
@@ -602,14 +318,14 @@
 		</div>
     </div><!--/#loginPop-->
 </div>
-<!------------------------------------- end ----------------------------------------->
+<!--- end ->
 <script type="text/javascript" src="style/js/Chart.min.js"></script>
 <script type="text/javascript" src="style/js/home.min.js"></script>
 <script type="text/javascript" src="style/js/count.js"></script>
 			<div class="clear"></div>
 			<input type="hidden" id="resubmitToken" value="" />
 	    	<a id="backtop" title="回到顶部" rel="nofollow"></a>
-	    </div><!-- end #container -->
+	    </div><! end #container -->
 	</div><!-- end #body -->
 	<div id="footer">
 		<div class="wrapper">

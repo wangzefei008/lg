@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/',function(){
-	$data['email']=Session::get('email');
-	$data['utype']=Session::get('utype');
-	// dd($data);
-	return view('lg.index',$data);
-});
+Route::get('/','Lg\IndexController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +28,15 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 Route::get('/register','Lg\RegisterController@index');
+//注册
 Route::post('/register_do','Lg\RegisterController@register_do');
+//注册处理
 Route::get('/login','Lg\RegisterController@login');
+//登录
 Route::post('/login_do','Lg\RegisterController@login_do');
+//登录处理
 Route::post('/check_email','Lg\RegisterController@check_email');
+
 Route::get('test',function(){
 	Session::put('uname','lisi');
 	
@@ -63,4 +63,40 @@ Route::any('/personal_favorites','Lg\PersonController@personal_favorites');//到
 Route::any('/del_favorites','Lg\PersonController@del_favorites');//到删除职位收藏夹
 Route::any('/pms_sys','Lg\PersonController@pms_sys');//到我的消息
 Route::any('/del_pms','Lg\PersonController@del_pms');//删除我的消息
+
+
+
+//企业中心首页
+Route::any('/company','Lg\CompanyController@index');
+//职位招聘添加
+Route::any('/company_create','Lg\CompanyController@add');
+//职位招聘验证
+Route::any('/company_add','Lg\CompanyController@add_pro');
+//企业信息展示
+Route::any('/company_mymessage','Lg\CompanyController@mymessage');
+//企业信息完善
+Route::any('/company_my_message','Lg\CompanyController@my_message');
+//企业信息完善验证
+Route::any('/company_my_message_pro','Lg\CompanyController@my_message_pro');
+//待处理简历
+Route::any('/labelresume','Lg\CompanyController@labelresume');
+//已通知简历
+Route::any('/notice','Lg\CompanyController@notice');
+//不合适简历
+Route::any('/unnotice','Lg\CompanyController@unnotice');
+//有效职位
+Route::any('effective','Lg\CompanyController@effective');
+//失效职位
+Route::any('online','Lg\CompanyController@online');
+
+//验证邮箱的唯一性
+Route::get('/logout','Lg\RegisterController@logout');
+//退出
+Route::get('/job_list','Lg\JobController@index');
+//招聘信息首页
+Route::any('/get_district','Lg\JobController@get_district');
+//获取城市
+Route::any('/toudi','Lg\JobController@toudi');
+//投递简历
+
 
