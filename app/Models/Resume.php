@@ -4,50 +4,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
 class Resume extends Model
 {
     protected  $table='resume';
-    protected $fillable = [
-        'title',
-        'uid',
-        'fullname',
-        'sex_cn',
-        'birthdate',
-        'residence',
-        'education_cn',
-        'major_cn',
-        'experience_cn',
-        'telephone',
-        'email',
-        'height',
-        'householdaddress',
-        'marriage_cn',
-        'trade_cn',
-        'wage_cn',
-        'intention_jobs'
-    ];
+
+    protected  $primaryKey='id';
+    protected  $guarded=['id'];
     public $timestamps=false;
-    //添加注册信息
+    //添加
     public function insert($arr)
     {
-    	$this->fill($arr);  		 // 设置值  data为数组
-        return $this->save();
+      //  dd($arr);
+//        DB::enableQueryLog();
+    	$this->fill($arr);   // 设置值  data为数组
+
+       return  $this->save();
+
+       // dd(response()->json(DB::getQueryLog()));
     }
     //查询简历
     public function select($uid){
     return $this->where('uid',$uid)->get()->toArray();
     }
+    //做修改简历的查询
+    public function select2($id){
+        return $this->where('id',$id)->get()->toArray();
+    }
     //删除简历
-    public function del($uid){
-        $resumes= $this->where('uid',$uid)->get()->toArray();
-      //  print_r($resumes);die;
-        $resume=$this->find($resumes[0]['id']);
-        return $resume->delete();
+    public function del($id){
+        $data=$this->find($id);
+        return $data->delete();
+        // return $data->_sql();die;
     }
     //修改简历
-    public function updates($data,$uid){
+    public function updates($data,$id){
        // print_r($data);die;
-        $resume= $this->where('uid',$uid);
+        $resume= $this->where('id',$id);
         return $resume->update($data);
     }
 }
