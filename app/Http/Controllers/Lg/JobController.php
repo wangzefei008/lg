@@ -114,10 +114,48 @@ class JobController extends Controller
 			// dd($data['job']);
 			$trade_cn=$data['job']['trade_cn'];
 			// echo $trade_cn;
-			$data['connect']=$job->get_connect($trade_cn);
-			// dd($data['connect']);
+			$data['connect']=$job->get_connect($trade_cn);			
+			$res=new \App\Models\Resume;
+			$data['resume']=$res->select($uid);
 			return view('lg.toudi',$data);
+		}		
+	}
+	//投递简历处理页面
+	public function toudi_add(){
+		$data=Request::all();
+		// dd($data);
+		$arr['resume_id']=$data['resume_id'];
+		$arr['resume_name']=$data['resume_name'];
+		$job_id=$data['jobs_id'];
+		$job=new \App\Models\Jobs;
+		$jobs=$job->get_one($job_id);
+		$arr['jobs_id']=$jobs['id'];
+		$arr['jobs_name']=$jobs['category_cn'];
+		$arr['company_id']=$jobs['c_id'];
+		$arr['company_name']=$jobs['companyname'];
+		$arr['personal_uid']=Session::get('uid');
+		$arr['apply_addtime']=time();
+		$res=new \App\Models\JobApply;
+		$cc=$res->select($job_id,$data['resume_id']);
+		// dd($cc);
+		if($cc){
+			return   2;
+		}else{
+			$aa=$res->add($arr);			
+		}		
+		//个人添加
+		$info['personal_uid']=Session::get('uid');
+		$info['resume_id']=$data['resume_id'];
+		$c_pro=new \App\Models\CompanyProfile;
+		$clr_uid=$c_pro->selectCid($jobs['c_id']);
+		$info['clr_uid']=$clr_uid['uid'];
+		$c_res=new \App\Models\CompanyLabelResume;
+		$bb=$c_res->add($info);
+		//公司添加
+		if($aa&&$bb){
+			echo 1;
+		}else{
+			echo 0;
 		}
-		
 	}
 }

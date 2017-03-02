@@ -39,6 +39,11 @@ class CompanyProfile extends Model
     	$info = $arr->update($data);
     	return $info;
     }
-
+     //根据c_id查询
+    public function selectCid($c_id)
+    {
+        $data = $this->where('c_id', $c_id )->first()->toArray();
+        return $data;
+    }
     
 }

@@ -33,7 +33,12 @@ class CompanyLabelResume extends Model
         ->join('resume','company_label_resume.resume_id','=','resume.id')
         ->where(['clr_uid'=>$uid,'resume_state'=>$resume_state])->count();
         return $count;
-
-
+    }
+    //添加个人投递的简历
+     public function add($data)
+    {
+        $this->fill($data);
+        $info = $this->save();
+        return $info;
     }
 }

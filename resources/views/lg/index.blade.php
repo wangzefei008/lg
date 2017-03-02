@@ -28,6 +28,7 @@
 		<!-- 职位分类  end -->
 		<div class="menu_box"></div>
 		</div>
+		<script src="style/js/home.min.js"></script>
     </div>
 		<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
         <div class="content">	

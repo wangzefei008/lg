@@ -36,7 +36,19 @@ Route::get('/login','Lg\RegisterController@login');
 Route::post('/login_do','Lg\RegisterController@login_do');
 //登录处理
 Route::post('/check_email','Lg\RegisterController@check_email');
-
+//验证邮箱
+Route::get('/qqlogin','Lg\RegisterController@qqlogin');
+//qq登录
+Route::get('/qq','Lg\RegisterController@qq');
+//qq链接
+Route::get('/reset','Lg\RegisterController@reset');
+//重置密码
+Route::post('/send','Lg\RegisterController@send');
+//发送验证码
+Route::post('/code','Lg\RegisterController@code');
+//验证验证码
+Route::post('/reset_pwd','Lg\RegisterController@reset_pwd');
+//修改密码
 
 //企业中心首页
 Route::any('/company','Lg\CompanyController@index');
@@ -70,4 +82,6 @@ Route::any('/get_district','Lg\JobController@get_district');
 //获取城市
 Route::any('/toudi','Lg\JobController@toudi');
 //投递简历
+Route::any('/toudi_add','Lg\JobController@toudi_add');
+//投递简历处理
 

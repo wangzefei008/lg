@@ -29,9 +29,8 @@ console.log(1);
 <script type="text/javascript" src="style/js/jquery.lib.min.js"></script>
 <script src="style/js/ajaxfileupload.js" type="text/javascript"></script>
 <script type="text/javascript" src="style/js/additional-methods.js"></script>
-<link rel="stylesheet" href="style/css/bootstrap.min.css">
-<!-- <script src="style/js/jquery.min.js"></script> -->
-<script src="style/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="style/css/bootstrap.min.css"> -->
+<!-- <script src="style/js/bootstrap.min.js"></script> -->
 <!--[if lte IE 8]>
     <script type="text/javascript" src="style/js/excanvas.js"></script>
 <![endif]-->
