@@ -1,3 +1,7 @@
+<?php
+$email=Session::get('email');
+$utype=Session::get('utype');
+?>
 <!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
@@ -14,11 +18,12 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 <meta name="baidu-site-verification" content="QIQ6KC1oZ6" />
-
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
-//var ctx = "h";
-//console.log(1);
+
+// var ctx = "h";
+console.log(1);
+
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/css/style.css"/>
@@ -28,6 +33,8 @@
 <script type="text/javascript" src="style/js/jquery.lib.min.js"></script>
 <script src="style/js/ajaxfileupload.js" type="text/javascript"></script>
 <script type="text/javascript" src="style/js/additional-methods.js"></script>
+<!-- <link rel="stylesheet" href="style/css/bootstrap.min.css"> -->
+<!-- <script src="style/js/bootstrap.min.js"></script> -->
 <!--[if lte IE 8]>
     <script type="text/javascript" src="style/js/excanvas.js"></script>
 <![endif]-->
@@ -35,6 +42,11 @@
 var youdao_conv_id = 271546; 
 </script> 
 <script type="text/javascript" src="style/js/conv.js"></script>
+<style>
+.Pagination ul li{
+    list-style-type:none;
+}
+</style>
 </head>
 <body>
 <div id="body">
@@ -46,9 +58,14 @@ var youdao_conv_id = 271546;
             <ul class="reset" id="navheader">
                 <li class="current"><a href="index.html">首页</a></li>
                 <li ><a href="companylist.html" >公司</a></li>
+<<<<<<< HEAD
                 <li ><a href="#" target="_blank">招聘信息</a></li>
                 <li ><a href="{{URL::to('want')}}" target="_blank">求职信息</a></li>
                 <li ><a href="#" target="_blank">发布职位</a></li>
+=======
+                <li ><a href="{{URL::to('job_list')}}" target="_blank">招聘信息</a></li>
+                <li ><a href="#" target="_blank">求职信息</a></li>
+>>>>>>> 5d700f4fc05063b08e9f291a3bf2e568500890a4
             </ul>
              @if(!empty($email))
                 <dl class="collapsible_menu">
@@ -58,11 +75,11 @@ var youdao_conv_id = 271546;
                         <i></i>
                     </dt>
                     @if(!empty($utype)&&$utype==2)
-                        <dd><a rel="nofollow" href="">个人中心</a></dd>
+                        <dd><a rel="nofollow" href="person">个人中心</a></dd>
                     @else
-                        <dd><a rel="nofollow" href="">企业中心</a></dd>
+                        <dd><a rel="nofollow" href="{{URL::to('company')}}">企业中心</a></dd>
                     @endif
-                    <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+                    <dd class="logout"><a rel="nofollow" href="{{URL::to('logout')}}">退出</a></dd>
                 </dl>
              @else               
             <ul class="loginTop">
@@ -71,5 +88,6 @@ var youdao_conv_id = 271546;
                 <li><a href="{{URL::to('register')}}" rel="nofollow">注册</a></li>
             </ul>
             @endif
-                                </div>
+         </div>
     </div><!-- end #header -->
+

@@ -9,6 +9,7 @@ use Validator;
 use App\User;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Mail;  
 
 class RegisterController extends Controller
 {
@@ -77,5 +78,80 @@ class RegisterController extends Controller
 			session(['email'=>$email,'uid'=>$arr['uid'],'utype'=>$arr['utype']]);
 			echo 1;
 		}		
+	}
+	//qq
+	public function qq()
+	{
+    	return Socialite::with('qq')->redirect();
+    }
+    //qq登录
+
+	public function qqlogin()
+	{
+	    $user = Socialite::driver('qq')->user();
+	    dd($user);
+	}
+	//退出
+	public function logout()
+	{
+		Session::flush();
+		//销毁所有session
+		return redirect('login')->with('退出成功');
+	}
+	//重置密码
+	public function reset()
+	{
+
+		
+		return view('lg.reset');
+	}
+	// 发送验证码
+	public function send()
+	{
+		$email=Request::all()['email'];
+		$members=new \App\Models\Members;
+		if(empty($members->email($email))){
+			echo 0;
+		}else{
+			$num = rand(1000,9999);
+			//发送邮件
+	        $flag = Mail::send('lg.email',['num'=>$num],function($message)
+	        {
+	            $to = Request::all()['email'];
+	            $message ->to($to)->subject('重置密码');
+	        });
+	        if($flag){
+	        	session(['code'=>$num]);
+	            echo 1;
+	        }else{
+	            echo 2;
+	        }
+		}
+	}
+	//验证验证码
+	public function code()
+	{
+		$code=Request::all()['code'];
+		$num=Session::get('code');
+		if($code==$num){
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+	//重置密码
+	public function reset_pwd()
+	{
+		$email=Request::all()['email'];
+		$password=md5(Request::all()['password']);
+		$members=new \App\Models\Members;
+		$aa=$members->reset_pwd($email,$password);
+		if($aa){
+			echo '<script>alert("重置成功！！！")</script>';
+			return redirect('login');
+		}else{
+			echo '<script>alert("重置失败！！！")</script>';
+			return redirect('reset');
+		}
 	}
 }
