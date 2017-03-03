@@ -102,6 +102,7 @@ class CompanyController extends Controller
         $model = new CompanyProfile;
         $data = $model->selectUid($uid);
         $arr['data'] = $data;
+         $arr['status'] = '';
         // dd($data);
     	return view('lg.myhome',$arr);
     }
