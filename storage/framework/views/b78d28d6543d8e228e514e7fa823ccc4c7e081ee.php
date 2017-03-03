@@ -5,6 +5,9 @@ $utype=Session::get('utype');
 <!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
+    <style>
+        li{list-style: none}
+    </style>
 <script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="alternate" media="handheld"  />
@@ -15,7 +18,6 @@ $utype=Session::get('utype');
 <meta content="" name="description">
 <meta content="" name="keywords">
 <meta name="baidu-site-verification" content="QIQ6KC1oZ6" />
-
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
 // var ctx = "h";
@@ -66,7 +68,7 @@ var youdao_conv_id = 271546;
                         <i></i>
                     </dt>
                     <?php if(!empty($utype)&&$utype==2): ?>
-                        <dd><a rel="nofollow" href="">个人中心</a></dd>
+                        <dd><a rel="nofollow" href="person">个人中心</a></dd>
                     <?php else: ?>
                         <dd><a rel="nofollow" href="<?php echo e(URL::to('company')); ?>">企业中心</a></dd>
                     <?php endif; ?>
