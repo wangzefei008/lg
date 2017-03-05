@@ -129,7 +129,7 @@
 	            <li class="odd clearfix">
 			        <div class="hot_pos_l">
 			            <div class="mb10">
-			                <a href="h/jobs/86989.html" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
+			                <a href="toudi?j_id={{$v['id']}}" title="前端开发" target="_blank">{{$v['category_cn']}}</a> 
 			                &nbsp;
 			                <span class="c9">{{$v['district_cn']}}</span>
 			            </div>
@@ -145,7 +145,7 @@
 			            <div class="apply">
 			                <a href="toudi?j_id={{$v['id']}}" target="_blank">投个简历</a>
 			            </div>
-			            <div class="mb10"><a href="h/c/1712.html" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
+			            <div class="mb10"><a href="toudi?j_id={{$v['id']}}" title="紫色医疗" target="_blank">{{$v['companyname']}}</a></div>
                         <span><em class="c7">领域： </em>{{$v['trade_cn']}}</span>
                         <span><em class="c7">创始人：</em> {{$v['contact']}}</span><br /> 
                         <span><em class="c7">规模： </em>{{$v['scale_cn']}}</span>

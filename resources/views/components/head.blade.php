@@ -1,6 +1,11 @@
 <?php
 $email=Session::get('email');
 $utype=Session::get('utype');
+if(!isset($status))
+{
+    $status = '';
+}
+// isset($status)?$status:null;
 ?>
 <!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">

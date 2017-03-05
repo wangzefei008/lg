@@ -29,7 +29,7 @@ class CompanyController extends Controller
     	$data['email'] = $email;
     	$data['data'] = $data;
         $data['count'] = '';
-        $data['status'] = '';
+        // $data['status'] = '';
     	return view('lg.positions',$data);
     }
 
